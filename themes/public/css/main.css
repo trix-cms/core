@@ -1,0 +1,191 @@
+body {
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    font-size: 14px;
+    background: url(../images/bg.png);
+}
+html, body {
+    height: 100%;
+}
+body p {
+    font-size: 14px;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+}
+.wrap {
+    min-height: 100%;
+    position: relative;
+}
+.container {
+    
+}
+.header {
+    margin-top: 5px;
+}
+/* sections */
+.wellcome-message p {
+    font-size: 16px;
+}
+.page-header {
+    margin-top: 0;
+    padding: 0;
+}
+.page-header h3 {
+    margin-bottom: 5px;
+}
+.page-header .header-actions {
+    float: right;
+}
+.page-header .header-actions li {
+    display: inline-block;
+}
+.page-header .header-actions {
+    list-style: none;
+}
+.footer {
+    padding-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 57px;
+    position: absolute;
+    bottom: 0;
+}
+.footer .container {
+}
+.footer-nav {
+    list-style: none;
+    text-align: right;
+}
+.footer-nav li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+/* breadcrumbs */
+.breadcrumb, .breadcrumb a {
+    text-transform: lowercase;
+}
+
+/* typography */
+.text {
+    font-size: 14px;
+}
+h3.heading {
+    margin-bottom: 10px;
+}
+a:hover {
+    color: #F15A2A;
+    text-decoration: none;
+}
+.small-link a:hover {
+    color: #F15A2A;
+    
+}
+.small-link a {
+    color: #999;
+    font-size: 12px;
+    text-decoration: underline;
+}
+.table th {
+    text-align: center;
+}
+.controls textarea {
+    width: 500px;
+    height: 80px;
+}
+[class^="icon-"]:last-child {
+    margin-top: 2px;
+}
+.hero-unit {
+    background-color: #dadada;
+}
+hr {
+    border-top-color: #ddd;
+}
+.page-header {
+    border-bottom-color: #ddd;
+}
+
+.menu {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.menu li {
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 20px;
+    text-transform: uppercase;
+}
+.menu .active a {
+    color: #fc7232;
+}
+.brand {
+    padding-right: 0;
+    padding-left: 0;
+    font-weight: bold;
+    color: #444;
+    text-shadow: 0 1px 0 rgba(200, 200, 200, .1), 0 0 30px rgba(200, 200, 200, .125);
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.user-block {
+    float: right;
+}
+.user-block input {
+    width: 100px;
+}
+.header {
+    min-height: 120px;
+}
+.logo {
+    width: 233px;
+    height: 84px;
+    background-image: url();
+    font-size: 64px;
+    padding-top: 40px;
+}
+.logo a {
+    color: black;
+}
+.sidebar-block {
+    padding: 8px 6px;
+}
+.sidebar-block-title {
+    margin-bottom: 4px;
+    text-align: center;
+}
+.page-text {
+    text-align: justify;
+}
+.page-text h2 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: normal;
+}
+.header .banner {
+    float: right;
+    margin-top: 20px;
+}
+.left-sidebar .nav li a {
+    font-size: 12px;
+}
+.well {
+    background-color: #fafafa;
+}
+.test .form-horizontal input[type=text] {
+    width: 300px;
+}
+
+/** navigation **/
+.nav-tabs {
+    border-bottom: 1px solid #ccc;
+}
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+    background: url(../images/bg.png);
+    border-color: #ccc;
+    border-bottom-color: transparent;
+}
+.avatar-image {
+    background: url(../../../assets/images/avbg.png); 
+    padding: 2px 9px 9px 2px;
+}

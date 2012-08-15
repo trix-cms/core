@@ -1,0 +1,1 @@
+<li><?php echo URL::anchor('admin/scaffold/table/'. $item, $item)?></li>

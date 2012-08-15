@@ -1,0 +1,19 @@
+<div class="page-header">
+    <h3>Список миграций</h3>
+</div>
+
+<?php if( $migrations ):?>
+    <form class="table-form">
+        <?php Decorator::table_view(array(
+            'view'=>'_row',
+            'items'=>$migrations,
+            'headings'=>array(
+                'Версия',
+                'Файл',
+                'Действия'
+            )
+        ))?>
+	</form>
+<?php else:?>
+    <p>Нет миграций</p>
+<?php endif;?>

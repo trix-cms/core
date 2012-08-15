@@ -1,0 +1,16 @@
+.scaffold-table {
+    width: auto !important;
+    overflow: scroll !important;
+}
+.scaffold-table td, .scaffold-table tr, .scaffold-table th {
+    padding: 0 10px;
+    margin: 0;
+}
+.scaffold-table td, .scaffold-table th {
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    width: auto;
+}
+.scaffold-table th {
+    border-top: 1px solid #e6e6e6;
+}

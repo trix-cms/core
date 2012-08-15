@@ -1,0 +1,12 @@
+body {
+    font-size: 14px;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    line-height: 18px;
+}
+body p {
+    font-size: 14px;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    line-height: 18px;
+    margin: 0;
+    padding: 0;
+}
