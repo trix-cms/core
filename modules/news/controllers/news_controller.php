@@ -24,7 +24,7 @@ class News_Controller extends Public_Controller {
         $this->template->set('categories', $categories);
         
         // вложенный шаблон
-        $this->template->set_layout('news::layout');
+        $this->template->set_layout('layout');
     }
 
     /**
@@ -74,7 +74,7 @@ class News_Controller extends Public_Controller {
         $this->breadcrumbs->add_item($item->category_title, 'news/cat/'. $item->category_id);
         $this->breadcrumbs->add_item('Просмотр публикации', 'news/view/'. $item->id);
 
-        $this->template->render('view', array(
+        $this->render('view', array(
             'item'=>$item
         ));
     }

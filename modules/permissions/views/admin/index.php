@@ -7,6 +7,6 @@
 <ul>
     <?php Decorator::list_view(array(
         'items'=>$groups,
-        'view'=>'permissions::admin/_item'
+        'view'=>'admin/_item'
     ))?>
 </ul>

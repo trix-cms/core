@@ -16,7 +16,7 @@ class Migrations_Controller extends Admin_Controller {
         $this->breadcrumbs->add_item('Миграции', 'admin/migrations');
         
         // layout
-        $this->template->set_layout('layout');
+        $this->template->set_layout('admin/layout');
     }
     
     function action_index()
@@ -33,7 +33,7 @@ class Migrations_Controller extends Admin_Controller {
         // можно ли обновить до последней версии
         $upgrade_to_latest = $latest > $version;
         
-        $this->template->render('index', array(
+        $this->render('index', array(
             'migrations'=>$migrations,
             'version'=>$version,
             'upgrade_to_latest'=>$upgrade_to_latest

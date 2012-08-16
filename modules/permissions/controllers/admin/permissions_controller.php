@@ -16,7 +16,7 @@ class Permissions_Controller extends Admin_Controller {
         $this->breadcrumbs->add_item('Права доступа', 'admin/permissions');
         
         // вложенный шаблон
-        $this->template->set_layout('permissions::admin/layout');
+        $this->template->set_layout('admin/layout');
     }
     
     function action_index()

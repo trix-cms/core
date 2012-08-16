@@ -16,7 +16,7 @@ class Scaffold_Controller extends Admin_Controller {
         $this->template->append_metadata(Module::css('scaffold.css', 'scaffold'));
 
         // layout
-        $this->template->set_layout('layout');
+        $this->template->set_layout('admin/layout');
     }
     
     /**
@@ -26,7 +26,7 @@ class Scaffold_Controller extends Admin_Controller {
     {
         $tables = $this->scaffold_m->get_tables();
         
-        $this->template->render('index', array(
+        $this->render('index', array(
             'tables'=>$tables
         ));
     }
@@ -67,7 +67,7 @@ class Scaffold_Controller extends Admin_Controller {
         
         $this->breadcrumbs->add_item($table, 'admin/scaffolding/'. $table);
         
-        $this->template->render('table', array(
+        $this->render('table', array(
             'total'=>$total,
             'rows'=>$rows,
             'pagination'=>$pagination,
@@ -150,7 +150,7 @@ class Scaffold_Controller extends Admin_Controller {
         $this->breadcrumbs->add_item($table, 'admin/scaffold/table/'. $table);
         $this->breadcrumbs->add_item('Создание записи', 'admin/scaffold/row_create/'. $table);
         
-        $this->template->render('row/create', array(
+        $this->render('row/create', array(
             'table'=>$table,
             'fields'=>$fields,
             'primary_key'=>$primary_key,
@@ -180,6 +180,6 @@ class Scaffold_Controller extends Admin_Controller {
         
         $this->breadcrumbs->add_item('SQL', 'admin/scaffold/sql');
         
-        $this->template->render('sql/index');
+        $this->render('sql/index');
     }
 }

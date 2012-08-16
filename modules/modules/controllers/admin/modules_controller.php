@@ -18,7 +18,7 @@ class Modules_Controller extends Admin_Controller {
 
         $this->template->set_title('Модули');
         
-        $this->template->render('modules/index', array(
+        $this->render('index', array(
             'modules'=>$modules,
             'core_modules'=>$core_modules
         ));
@@ -28,7 +28,7 @@ class Modules_Controller extends Admin_Controller {
     {
         $modules = $this->modules_m->where('is_menu', 1)->order_by('order', 'ASC')->get_all();
         
-        $this->template->render('modules/order', array(
+        $this->render('order', array(
             'modules'=>$modules
         ));
     }

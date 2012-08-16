@@ -7,7 +7,7 @@
         <h3 class="clearfix">Порядок модулей в меню</h3>
             <?php Decorator::table_view(array(
                 'table_template'=>'_sortable_table',
-                'view'=>'modules/_sort_row',
+                'view'=>'admin/_sort_row',
                 'items'=>$modules,
                 'id'=>'modules',
                 'headings'=>array(

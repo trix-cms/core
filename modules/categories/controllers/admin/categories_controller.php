@@ -48,7 +48,7 @@ class Categories_Controller extends Admin_Controller {
         
         $this->breadcrumbs->add_item('Редактирование категории', 'admin/categories/edit/'. $category->id);
         
-        $this->template->render('edit', array(
+        $this->render('edit', array(
             'category'=>$category
         ));
     }

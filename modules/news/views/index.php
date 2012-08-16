@@ -1,5 +1,5 @@
 <?php Decorator::list_view(array(
-    'view'=>'news::_item',
+    'view'=>'_item',
     'items'=>$items,
     'no_items'=>'<p>Нет новостей</p>'
 ))?>

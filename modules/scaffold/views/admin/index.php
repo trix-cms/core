@@ -5,7 +5,7 @@
 <?php if( $tables ):?>
     <ul class="list-style-arrow">
         <?php Decorator::list_view(array(
-            'view'=>'_item',
+            'view'=>'admin/_item',
             'items'=>$tables,
         ))?>
 	</ul>

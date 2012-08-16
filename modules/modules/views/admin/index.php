@@ -8,7 +8,7 @@
             <h3 class="clearfix">Дополнительные модули</h3>
                <?php Decorator::table_view(array(
                     'table_template'=>'_table',
-                    'view'=>'modules/_row',
+                    'view'=>'admin/_row',
                     'items'=>$modules,
                     'headings'=>array(
                         '&nbsp;',
@@ -22,7 +22,7 @@
             <h3 class="clearfix">Основные модули</h3>
             <?php Decorator::table_view(array(
                 'table_template'=>'_table',
-                'view'=>'modules/_row',
+                'view'=>'admin/_row',
                 'items'=>$core_modules,
                 'headings'=>array(
                     '&nbsp;',

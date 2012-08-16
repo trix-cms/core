@@ -6,9 +6,4 @@ class Dashboard_Controller extends Public_Controller
     {
         $this->render('index');
     }
-    
-    public function action_module()
-    {
-        echo Modules::run('news/index');
-    }
 }
