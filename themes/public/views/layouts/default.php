@@ -1,7 +1,7 @@
 <?php echo HTML::doctype()?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <?php $this->load->view('partials/metadata')?>
+    <?php $this->load->view('::partials/metadata')?>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
         
         <div class="footer">
             <hr style="margin-bottom: 10px;" />
-            <?php $this->load->view('partials/footer')?>
+            <?php $this->load->view('::partials/footer')?>
     	</div>
     </div>
 </body>

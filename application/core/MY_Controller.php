@@ -16,49 +16,8 @@ class MY_Controller extends MX_Controller {
         
         CI::$APP->is_backend = $this->is_backend;
         
-        // домен
-        CI::$APP->domen = str_replace('.tour-manager.ru', '', $_SERVER['HTTP_HOST']);
-        
-        // аккаунты
-        $accounts = array(
-            'demo'=>'FJcebmZB',
-            'affrika'=>'boGbw41M'
-        );
-        
-        
-        // проверяем, существует ли аккаунт
-        if( !key_exists(CI::$APP->domen, $accounts) AND $_SERVER['REMOTE_ADDR'] != '127.0.0.1' )
-        {
-            header("HTTP/1.0 404 Not Found");
-            exit;
-        }
-        
-        if( $_SERVER['REMOTE_ADDR'] != '127.0.0.1' )
-        {
-            // загружаем бд
-            $config['hostname'] = 'localhost';
-            $config['username'] = CI::$APP->domen;
-            $config['password'] = $accounts[CI::$APP->domen];
-            $config['database'] = CI::$APP->domen;
-            $config['dbdriver'] = 'mysql';
-            $config['dbprefix'] = '';
-            $config['pconnect'] = TRUE;
-            $config['db_debug'] = TRUE;
-            $config['cache_on'] = FALSE;
-            $config['cachedir'] = APPPATH . 'cache';
-            $config['char_set'] = 'utf8';
-            $config['dbcollat'] = 'utf8_general_ci';
-            $config['swap_pre'] = '';
-            $config['autoinit'] = TRUE;
-            $config['stricton'] = FALSE;
-            
-            $this->load->database($config);
-        }
-        else
-        {
-            $this->load->database();
-        }
-        
+        $this->load->database();
+                
         // загружаем необходимые библиотеки
         $this->load->library(array(
             'settings/settings',
@@ -84,9 +43,9 @@ class MY_Controller extends MX_Controller {
     /**
      * Сокращение для Template::render()
      */
-    function render($view, $data = array(), $module = false)
+    function render($view, $data = array())
     {
-        $this->template->render($view, $data, $module);
+        $this->template->render($view, $data);
     }
     
     /**

@@ -56,9 +56,9 @@ class Settings {
             CI::$APP->breadcrumbs->add_item('Настройки', 'admin/settings');
         }
 
-        CI::$APP->template->render('index', array(
+        CI::$APP->template->render('settings::admin/index', array(
             'settings'=>$settings,
             'tabs'=>$tabs
-        ), 'settings');
+        ));
     }    
 }

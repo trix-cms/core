@@ -1,1 +1,1 @@
-<?php $this->load->view('partials/navigation')?>
+<?php $this->load->view('::partials/navigation')?>

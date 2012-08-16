@@ -15,7 +15,7 @@ class Page_Controller extends Public_Controller {
         // хлебные крошки
         $this->breadcrumbs->add_item('Модуль страницы', 'page');
         
-        $this->render('page/index');
+        $this->render('index');
     }
 
     /**

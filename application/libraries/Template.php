@@ -51,7 +51,7 @@ class Template {
     /**
      * Вывод шаблона
      */
-    function render($view, $data = array(), $module = false)
+    function render($view, $data = array())
     {        
         // файл вида
         $this->view = $view;
@@ -60,7 +60,7 @@ class Template {
         $this->data = array_merge($this->data, $data);
         
         // загружаем контент
-        $this->data['content'] = CI::$APP->load->view($this->view, $this->data, TRUE, $module);
+        $this->data['content'] = CI::$APP->load->view($this->view, $this->data, TRUE);
         
         // загружаем весь шаблон
         CI::$APP->load->view($this->layout[0], $this->data);

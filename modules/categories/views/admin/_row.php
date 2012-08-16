@@ -2,7 +2,7 @@
     <td style="text-align: left;">
         <?php echo str_repeat('&nbsp;&nbsp;&mdash;&nbsp;&nbsp;', $item->level - 1). $item->title?>
     </td>
-    <td>
+    <td style="width: 10px; text-align: center;">
     	<ul class="actions">
     		<li>
                 <?php echo URL::anchor(

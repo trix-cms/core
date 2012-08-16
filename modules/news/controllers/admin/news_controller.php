@@ -22,7 +22,7 @@ class News_Controller extends Admin_Controller {
         $this->breadcrumbs->add_item('Новости', 'admin/news');
         
         // вложенный шаблон
-        $this->template->set_layout('layout');
+        $this->template->set_layout('admin/layout');
     }
 
     /**
@@ -68,7 +68,7 @@ class News_Controller extends Admin_Controller {
     {        
         $categories_lib = new Categories_Lib;
         
-        $categories_lib->module($this->module);
+        $categories_lib->display();
     }
 
     /**

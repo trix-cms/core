@@ -51,10 +51,10 @@ class Categories_Lib extends Library {
         
         $this->breadcrumbs->add_item('Категории', 'admin/'. $module .'categories');
         
-        $this->template->render('module', array(
+        $this->template->render('categories::admin/module', array(
             'categories'=>$categories,
             'module'=>$module,
             'cat_options'=>$cat_options
-        ), 'categories');
+        ));
     }
 }

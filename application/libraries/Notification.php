@@ -38,7 +38,7 @@ class Notification {
     {
         if( $this->has_message )
         {
-            $view = 'notification/' . $this->type_name($this->type);
+            $view = '::notification/' . $this->type_name($this->type);
             
             CI::$APP->load->view($view, array(
                 'message'=>$this->message

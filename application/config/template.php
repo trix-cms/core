@@ -37,7 +37,7 @@ $config['theme_location'] = 'themes/';
 |
 */
 
-$config['layout'] = 'layouts/default';
+$config['layout'] = '::layouts/default';
 
 $config['wysiwyg'] = array(
     'admin'=>array(

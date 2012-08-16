@@ -29,6 +29,19 @@ class Admin_Controller extends MY_Controller {
         );
     }
     
+    /**
+     * Сокращение для Template::render()
+     */
+    function render($view, $data = array())
+    {
+        if( strstr($view, '::') === FALSE )
+        {
+            $view = 'admin/'. $view;
+        }
+        
+        parent::render($view, $data);
+    }
+    
     function action_settings()
     {
         $this->settings->display();

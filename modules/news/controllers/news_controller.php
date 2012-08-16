@@ -24,7 +24,7 @@ class News_Controller extends Public_Controller {
         $this->template->set('categories', $categories);
         
         // вложенный шаблон
-        $this->template->set_layout('layout');
+        $this->template->set_layout('news::layout');
     }
 
     /**

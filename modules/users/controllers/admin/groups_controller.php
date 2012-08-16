@@ -10,7 +10,7 @@ class Groups_Controller extends Admin_Controller {
         $this->load->model('groups_m');
         
         // вложенный шаблон
-        $this->template->set_layout('groups/layout');
+        $this->template->set_layout('users::admin/groups/layout');
         
         // хлебные крошки
         $this->breadcrumbs->add_item('Группы', 'users/admin/groups');

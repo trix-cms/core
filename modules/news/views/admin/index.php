@@ -1,7 +1,7 @@
 <?php if( $news ):?>
     <form class="table-form">
         <?php Decorator::table_view(array(
-            'view'=>'_row',
+            'view'=>'admin/_row',
             'items'=>$news,
             'headings'=>array(
                 'ID',

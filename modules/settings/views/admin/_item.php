@@ -13,9 +13,9 @@
             data-placement="right"
             data-target="focus"
         >
-            <?php $this->load->view('_form_item', array(
+            <?php $this->load->view('settings::admin/_form_item', array(
                 'setting'=>$item
-            ), FALSE, 'settings')?>
+            ), FALSE)?>
         </div>
     </div>
 </div>

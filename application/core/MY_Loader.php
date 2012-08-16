@@ -6,57 +6,41 @@ require APPPATH."third_party/MX/Loader.php";
 class MY_Loader extends MX_Loader {
     
     /** Load a module view **/
-	public function view($view, $vars = array(), $return = FALSE, $another_module = false) 
-    {
+	public function view($view, $vars = array(), $return = FALSE) 
+    {        
+        // если рендер из модуля, то грузим из соответсвующего модуля
+        if( $this->module != '' AND strstr($view, '::') === FALSE )
+        {
+            $view = $this->module .'::'. $view;
+        }
+        
         // пути поиска файла
         $this->_ci_view_paths = array();
-        
-        // если админская часть, то добавляем название админской папки
-        $admin_folder = CI::$APP->is_backend ? 'admin/' : '';
-        
-        // папка модкля
-        $module_folder = $this->_module ? $this->_module .'/' : '';
-        
-        // папка не текущего модуля
-        $another_module = $another_module ? $another_module .'/' : FALSE;
         
         // расположение модулей
         $path = CI::$APP->config->item('modules_locations');
         $modules_locations = key( $path );
-        
-        // если нужен view из другого модуля
-        if( $another_module )
+
+        if( strstr($view, '::') !== FALSE )
         {
-            // поиск в теме с модулем
-    		$this->_ci_view_paths[] = CI::$APP->config->item('theme_location').CI::$APP->template->theme.'/'. $another_module . 'views/';
+            list($module, $view) = explode('::', $view);
             
-            // поиск в модуле
-            $this->_ci_view_paths[] = $modules_locations . $another_module . 'views/'. $admin_folder;
+            // поиск в теме с модулем
+    		$this->_ci_view_paths[] = CI::$APP->config->item('theme_location').CI::$APP->template->theme . '/views/' . $module .'/';
+            
+            // поиск в текущем модуле
+            $this->_ci_view_paths[] = $modules_locations . $module .'/'. 'views/';
+            
+            // поиск в системной папке
+            $this->_ci_view_paths[] = APPPATH . 'views/';
         }
         else
         {
-            if( $this->_module )
-            {
-                // поиск в теме с модулем
-        		$this->_ci_view_paths[] = CI::$APP->config->item('theme_location').CI::$APP->template->theme.'/views/'.$module_folder;
-                
-                // поиск в текущем модуле
-                $this->_ci_view_paths[] = $modules_locations . $module_folder . 'views/'. $admin_folder;            
-                
-                // поиск в теме с без модуля
-        		$this->_ci_view_paths[] = CI::$APP->config->item('theme_location').CI::$APP->template->theme.'/views/';
-                
-                // поиск в системной папке
-                $this->_ci_view_paths[] = APPPATH . 'views/'.$admin_folder;
-            }
-            else
-            {
-                // поиск в теме
-        		$this->_ci_view_paths[] = CI::$APP->config->item('theme_location').CI::$APP->template->theme.'/views/';
-                
-                // поиск в системной папке
-                $this->_ci_view_paths[] = APPPATH . 'views/'.$admin_folder;
-            }
+            // поиск в теме
+    		$this->_ci_view_paths[] = CI::$APP->config->item('theme_location').CI::$APP->template->theme.'/views/';
+            
+            // поиск в системной папке
+            $this->_ci_view_paths[] = APPPATH . 'views/';
         }
         
 		return $this->_ci_load(array(

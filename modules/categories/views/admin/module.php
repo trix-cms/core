@@ -4,19 +4,23 @@
     </h3>
 </div>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <td>Название</td>
-            <td>Действия</td>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach($categories as $category):?>
-            <?php $this->load->view('_row', array('item'=>$category), FALSE, 'categories')?>
-        <?php endforeach;?>
-    </tbody>
-</table>
+<?php if( $categories ):?>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Название</td>
+                <td>Действия</td>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($categories as $category):?>
+                <?php $this->load->view('categories::admin/_row', array('item'=>$category), FALSE, 'categories')?>
+            <?php endforeach;?>
+        </tbody>
+    </table>
+<?php else:?>
+    <p>Нет категорий</p>
+<?php endif;?>
 
 <div class="page-header">
     <h3>Создать категорию</h3>

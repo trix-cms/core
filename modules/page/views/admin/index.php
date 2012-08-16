@@ -3,7 +3,7 @@
 </div>
 
 <?php Decorator::table_view(array(
-    'view'=>'_item',
+    'view'=>'admin/_item',
     'items'=>$pages,
     'no_items'=>'<p>Нет страниц</p>',
     'headings'=>array(

@@ -74,7 +74,7 @@ class Decorator {
      */
     static function table_view($config)
     {
-        $template = isset($config['template']) ? $config['template'] : 'partials/tables/default';
+        $template = isset($config['template']) ? $config['template'] : '::partials/tables/default';
         $config['no_items'] = isset($config['no_items']) ? $config['no_items'] : '';
         $config['view'] = isset($config['view']) 
                                     ? $config['view'] 
@@ -107,7 +107,7 @@ class Decorator {
                 }
                 else
                 {
-                    $html .= CI::$APP->load->view('inputs/'. $template . $input['type'], $input, TRUE);
+                    $html .= CI::$APP->load->view('::inputs/'. $template . $input['type'], $input, TRUE);
                 }
             }
         }

@@ -1,6 +1,6 @@
 <?php Decorator::table_view(array(
     'items'=>$groups,
-    'view'=>'groups/_item',
+    'view'=>'users::admin/groups/_item',
     'headings'=>array(
         'Название',
         'Slug',
