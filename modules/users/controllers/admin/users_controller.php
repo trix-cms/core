@@ -16,13 +16,13 @@ class Users_Controller extends Admin_Controller {
         $this->breadcrumbs->add_item('Пользователи', 'admin/users');
         
         // вложенный шаблон
-        $this->template->set_layout('layout');
+        $this->template->set_layout('admin/layout');
     }
 
     /**
      * Список пользователей
      */
-    function action_index($type = 'not_moderated', $page = 1)
+    function action_index($type = 'all', $page = 1)
     {        
         $limit = 10;
         $offset = ($page - 1)*$limit;
