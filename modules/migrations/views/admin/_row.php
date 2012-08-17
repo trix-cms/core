@@ -1,4 +1,4 @@
-<?php $current_version = Migrations_Helper::version($item)?>
+<?php $current_version = Migrations\Helper::version($item)?>
 <tr>
     <td style="width: 10px; text-align: right;">
         <?=$current_version?>

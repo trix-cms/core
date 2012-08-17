@@ -3,7 +3,7 @@
 class Auth extends Library {
 
     function __construct()
-    {
+    {        
         $this->load->model('users/users_m');
         
         CI::$APP->user = $this->users_m->get_by_id($this->session->userdata('user_id'));

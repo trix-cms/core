@@ -1,6 +1,8 @@
 <?php
 
-class News_Lib {
+namespace News;
+
+class News {
     
     static function widget()
     {

@@ -1,6 +1,6 @@
 <?php
 
-class Page_Controller extends Public_Controller {
+class Page_Controller extends Core\Controllers\Frontend {
 
     function __construct()
     {

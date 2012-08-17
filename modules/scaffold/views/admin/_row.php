@@ -23,7 +23,7 @@
     </td>
     
     <?php $k=0; foreach($item as $foo):?>
-        <td <?php echo Scaffold_Helper::field_style($fields[$k])?>>
+        <td <?php echo Scaffold\Helper::field_style($fields[$k])?>>
             <?php echo htmlspecialchars(Text::word_limiter($foo, 20, '...'))?>
         </td>
     <?php $k++; endforeach;?>

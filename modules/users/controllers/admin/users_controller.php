@@ -1,6 +1,6 @@
 <?php
 
-class Users_Controller extends Admin_Controller {
+class Users_Controller extends Core\Controllers\Backend {
 
     function __construct()
     {

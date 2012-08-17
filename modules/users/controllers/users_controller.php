@@ -1,13 +1,12 @@
 <?php
 
-class Users_Controller extends Users_Module_Controller {
+class Users_Controller extends Users\Controllers\Module {
     
     function __construct()
     {
         parent::__construct();
         
         // вложенный шаблон
-        $this->template->set_layout('layouts/default');
         $this->template->set_layout('layouts/auth');
     }
     

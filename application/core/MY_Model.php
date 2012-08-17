@@ -27,7 +27,7 @@ class MY_Model extends CI_Model {
         
         if( !$this->entity )
         {
-            $this->entity = $this->module.'_Entity';
+            $this->entity = $this->module.'\Entity';
         }
         
         /*

@@ -1,6 +1,6 @@
 <?php
 
-class Dashboard_Controller extends Admin_Controller {
+class Dashboard_Controller extends Core\Controllers\Backend {
 
     function action_index()
     {

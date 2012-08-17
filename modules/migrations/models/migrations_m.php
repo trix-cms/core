@@ -32,7 +32,7 @@ class Migrations_m extends MY_Model {
     
     function get_latest()
     {
-        $migrations = Migrations_Helper::get_migrations();
+        $migrations = Migrations\Helper::get_migrations();
         
         return (int)substr(basename(end($migrations)), 0, 3);
     }

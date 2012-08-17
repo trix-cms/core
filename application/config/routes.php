@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "page/view/trix";
+$route['default_controller'] = "dashboard";
 $route['404_override'] = 'errors/show_404';
 
 $route['users/profile'] = "users/profile/default";

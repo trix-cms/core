@@ -1,6 +1,8 @@
 <?php
 
-class Page_Entity extends Entity {
+namespace Page;
+
+class Entity extends \Entity {
     
     function get_full_url()
     {

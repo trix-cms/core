@@ -1,6 +1,6 @@
 <?php
 
-class Scaffold_Controller extends Admin_Controller {
+class Scaffold_Controller extends Core\Controllers\Backend {
     
     function __construct()
     {

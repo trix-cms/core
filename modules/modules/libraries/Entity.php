@@ -1,6 +1,10 @@
 <?php
 
-class Modules_Entity extends Entity {
+namespace Modules;
+
+use CI;
+
+class Entity extends \Entity {
     
     function get_full_url()
     {

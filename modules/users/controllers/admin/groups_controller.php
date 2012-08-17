@@ -1,6 +1,6 @@
 <?php
 
-class Groups_Controller extends Admin_Controller {
+class Groups_Controller extends Core\Controllers\Backend {
     
     function __construct()
     {

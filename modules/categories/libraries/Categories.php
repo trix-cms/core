@@ -1,6 +1,6 @@
 <?php
 
-class Categories_Lib extends Library {
+class Categories extends Library {
     
     function display()
     {

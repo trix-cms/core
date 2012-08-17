@@ -1,6 +1,6 @@
 <?php
 
-class Permissions_Controller extends Admin_Controller {
+class Permissions_Controller extends Core\Controllers\Backend {
     
     function __construct()
     {

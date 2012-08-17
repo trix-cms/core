@@ -1,6 +1,10 @@
 <?php
 
-class Modules_Helper {
+namespace Modules;
+
+use CI;
+
+class Helper {
 
     static $modulesNames = array();
 

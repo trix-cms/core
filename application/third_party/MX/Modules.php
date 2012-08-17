@@ -119,6 +119,42 @@ class Modules
 			include_once $location;
 			return;
 		}
+        
+        //----------------------------------------------------------------
+        /* autoload from modules */
+        //----------------------------------------------------------------
+        $modules_locations = Modules::$locations;
+
+        // ищем в модулях
+        if( strstr($class, '\\') !== FALSE )
+        {
+            $delimiter = strstr($class, '_') ? '_' : '\\';
+            $items = explode($delimiter, $class);
+            $module = $items[0];
+            unset($items[0]);
+        }    
+        else
+        {
+            $module = $class;
+            $items[] = $class;
+        }
+        
+        $class_path = strtolower($module) .'_libraries_'. implode('_', $items) . EXT;
+        $class_path = str_replace('_', DIRECTORY_SEPARATOR, $class_path);
+        
+        //echo $class_path .'|'. $class .'<br />';
+        
+        foreach($modules_locations as $location => $val)
+        {
+            $path = $location . $class_path;
+            
+            if( file_exists( $path ) )
+            {
+                include( $path );
+                return;
+            }
+        }
+        //----------------------------------------------------------------
 		
 		/* autoload core classes */
 		if(is_file($location = APPPATH.'core/'.$class.EXT)) {

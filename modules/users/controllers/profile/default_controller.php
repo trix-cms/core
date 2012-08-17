@@ -3,7 +3,7 @@
 /**
  * Профиль пользователя
  */
-class Default_Controller extends Users_Profile_Controller {
+class Default_Controller extends Users\Controllers\Profile {
     
     /**
      * Первая страница профиля пользователя

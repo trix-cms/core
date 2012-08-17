@@ -3,7 +3,7 @@
 /**
  * Админская часть модуля новостей
  */
-class News_Controller extends Admin_Controller {
+class News_Controller extends Core\Controllers\Backend {
     
     public $upload_data;
 
@@ -66,7 +66,7 @@ class News_Controller extends Admin_Controller {
      */
     function action_categories()
     {        
-        $categories_lib = new Categories_Lib;
+        $categories_lib = new Categories;
         
         $categories_lib->display();
     }

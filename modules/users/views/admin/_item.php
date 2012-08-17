@@ -10,7 +10,7 @@
         )?>
     </td>
     <td>
-        <?=Users_Groups::label($item->group_slug)?>
+        <?=Users\Groups::label($item->group_slug)?>
     </td>
     <td>
         <?=$item->email?>

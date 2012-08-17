@@ -1,6 +1,10 @@
 <?php
 
-class Users_Groups {
+namespace Users;
+
+use CI;
+
+class Groups {
     
     static function label($group)
     {
@@ -8,7 +12,7 @@ class Users_Groups {
         
         $groups = CI::$APP->groups_m->get_all();
         
-        $groups = CArray::map($groups, 'slug', 'name');
+        $groups = \CArray::map($groups, 'slug', 'name');
         
         return $groups[$group];
     }

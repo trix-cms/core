@@ -1,6 +1,6 @@
 <?php
 
-class Migrations_Controller extends Admin_Controller {
+class Migrations_Controller extends Core\Controllers\Backend {
     
     function __construct()
     {
@@ -22,7 +22,7 @@ class Migrations_Controller extends Admin_Controller {
     function action_index()
     {
         // файлы миграций
-        $migrations = array_reverse(Migrations_Helper::get_migrations());
+        $migrations = array_reverse(Migrations\Helper::get_migrations());
         
         // текущая версия
         $version = $this->migrations_m->get_version();
