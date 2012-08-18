@@ -27,11 +27,15 @@ class Notification {
     {
         $this->type = $type;
         $this->message = $message;
+        $this->has_message = TRUE;
+    }
+    
+    function set_flash($type, $message)
+    {
         CI::$APP->session->set_flashdata('notification', array(
             'type'=>$type,
             'message'=>$message
         ));
-        $this->has_message = TRUE;
     }
     
     function display()
