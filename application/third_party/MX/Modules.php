@@ -128,9 +128,14 @@ class Modules
         // ищем в модулях
         if( strstr($class, '\\') !== FALSE )
         {
+            $class = strtolower($class);
             $delimiter = strstr($class, '_') ? '_' : '\\';
             $items = explode($delimiter, $class);
+            $items[count($items) - 1] = ucfirst($items[count($items) - 1]);
             $module = $items[0];
+            
+            $class = implode(DIRECTORY_SEPARATOR, $items);
+            
             unset($items[0]);
         }    
         else
@@ -141,8 +146,6 @@ class Modules
         
         $class_path = strtolower($module) .'_libraries_'. implode('_', $items) . EXT;
         $class_path = str_replace('_', DIRECTORY_SEPARATOR, $class_path);
-        
-        //echo $class_path .'|'. $class .'<br />';
         
         foreach($modules_locations as $location => $val)
         {
