@@ -137,7 +137,14 @@ class News_Controller extends Core\Controllers\Backend {
         }
         
         // хлебные крошки
-        $this->breadcrumbs->add_item('Добавление', 'admin/news/add');     
+        if($news)
+        {
+            $this->breadcrumbs->add_item('Редактирование', 'admin/news/edit');
+        }
+        else
+        {
+            $this->breadcrumbs->add_item('Добавление', 'admin/news/add');
+        }  
         
         // скрипты
         $this->template->append_metadata(Assets::js('translit.js'));

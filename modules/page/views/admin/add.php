@@ -1,5 +1,17 @@
 <div class="page-header">
-    <h3><?=$page ? 'Редактирование' : 'Создание'?> страницы</h3>
+    <ul class="header-actions">
+        <li>
+            <?=URL::anchor(
+                'admin/page', 
+                'Список', 
+                array(
+                    'class'=>'btn btn-primary'
+                )
+            )?>
+        </li>
+    </ul>
+
+    <h3><?=$page ? 'Редактирование' : 'Создание'?></h3>
 </div>
 
 <?php Decorator::form_view(array(

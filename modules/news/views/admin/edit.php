@@ -1,6 +1,19 @@
-<h3 style="margin-bottom: 10px;">
-    <?php echo $news ? 'Редактирование' : 'Добавление'?> новости
-</h3>
+<div class="page-header">
+    <ul class="header-actions">
+        <li>
+            <?=URL::anchor(
+                'admin/news',
+                'Список',
+                array(
+                    'class'=>'btn btn-primary'
+                )
+            )?>
+        </li>
+    </ul>
+    <h3>
+        <?=$news ? 'Редактирование' : 'Добавление'?>
+    </h3>
+</div>
 
 <?php echo Decorator::form_view(array(
     'attr'=>array(
@@ -47,7 +60,7 @@
         array(
             'type'=>'submit',
             'name'=>'submit',
-            'value'=>$news ? 'Сохранить изменения' : 'Добавить новость',
+            'value'=>'Сохранить',
             'attr'=>array('type'=>'submit', 'value'=>' '),
             'visibility'=>!$news,
             'extra'=>' '. URL::anchor('admin/news', 'Обратно', array('class'=>'btn'))

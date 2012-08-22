@@ -11,30 +11,6 @@
                     )
                 )?>
             </li>
-             
-            <?php if( $this->action != 'add' ):?>
-                <li>
-                    <?=URL::anchor(
-                        'admin/news/add',
-                        'Добавить новость',
-                        array(
-                            'class'=>'btn btn-primary'
-                        )
-                    )?>
-                </li>
-            <?php endif;?>
-            
-            <?php if( $this->action != 'index' ):?>
-                <li>
-                    <?=URL::anchor(
-                        'admin/news',
-                        'Список новостей',
-                        array(
-                            'class'=>'btn btn-primary'
-                        )
-                    )?>
-                </li>
-            <?php endif;?>
         </ul>
         <h2>Новости</h2>
     </div>

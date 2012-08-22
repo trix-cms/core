@@ -1,5 +1,17 @@
 <div class="page-header">
-    <h3>Список страниц</h3>
+    <ul class="header-actions">
+        <li>
+            <?=URL::anchor(
+                'admin/page/add', 
+                'Создать', 
+                array(
+                    'class'=>'btn btn-primary'
+                )
+            )?>
+        </li>
+    </ul>
+
+    <h3>Список</h3>
 </div>
 
 <?php Decorator::table_view(array(
