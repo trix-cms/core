@@ -1,3 +1,19 @@
+<div class="page-header">
+    <ul class="header-actions">
+        <li>
+            <?=URL::anchor(
+                'admin/scaffold/row_create/'. $table, 
+                'Создать', 
+                array(
+                    'class'=>'btn btn-primary'
+                )
+            )?>
+        </li>
+    </ul>
+
+    <h3>Записи ()</h3>
+</div>
+
 <div style="overflow-x: scroll;">
     <table class="table table-bordered" class="scaffold-table">
     	<thead>

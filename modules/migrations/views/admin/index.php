@@ -1,4 +1,16 @@
 <div class="page-header">
+    <ul class="header-actions">
+        <li>
+            <?=URL::anchor(
+                'admin/migrations/create',
+                'Создать',
+                array(
+                    'class'=>'btn btn-primary'
+                )
+            )?>
+        </li>
+    </ul>
+
     <h3>Список миграций</h3>
 </div>
 

@@ -25,7 +25,7 @@ class Helper {
         return $style;
     }
     
-    static function generate_inputs($fields, $item)
+    static function generate_inputs($fields, $item, $table)
     {
         $inputs = array();
         
@@ -46,7 +46,7 @@ class Helper {
             'type'=>'submit',
             'name'=>'submit',
             'value'=>$item ? 'Сохранить' : 'Создать',
-            'extra'=> ' '
+            'extra'=> ' '. \URL::anchor('admin/scaffold/table/'. $table, 'Обратно', array('class'=>'btn'))
         );
         
         return $inputs;

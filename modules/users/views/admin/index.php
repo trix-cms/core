@@ -1,3 +1,9 @@
+<div class="page-header">
+    <h3>
+        Список
+    </h3>
+</div>
+
 <?php Decorator::table_view(array(
     'view'=>'admin/_item',
     'items'=>$users,

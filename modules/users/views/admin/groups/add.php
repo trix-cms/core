@@ -1,3 +1,19 @@
+<div class="page-header">
+    <ul class="header-actions">
+        <li>
+            <?=URL::anchor(
+                'users/admin/groups',
+                'Список',
+                array(
+                    'class'=>'btn btn-primary'
+                )
+            )?> 
+        </li>
+    </ul>
+
+    <h3>Создание</h3>
+</div>
+
 <?php Decorator::form_view(array(
     'attr'=>array(
         'class'=>'form-horizontal'
@@ -18,7 +34,8 @@
         array(
             'type'=>'submit',
             'value'=>'Сохранить',
-            'name'=>'submit'
+            'name'=>'submit',
+            'extra'=>' '. URL::anchor('users/admin/groups', 'Обратно', array('class'=>'btn'))
         )
     )
 ))?>

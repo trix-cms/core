@@ -3,7 +3,7 @@
 </div>
 
 <?php if( $tables ):?>
-    <ul class="list-style-arrow">
+    <ul style="list-style: none;">
         <?php Decorator::list_view(array(
             'view'=>'admin/_item',
             'items'=>$tables,

@@ -53,7 +53,7 @@ class Entity extends \Entity {
             $avatar = Config::DEFAULT_AVATAR;
         }
         
-        return URL::site_url($avatar);
+        return \URL::site_url($avatar);
     }
     
     function get_profile_url()

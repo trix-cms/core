@@ -167,7 +167,7 @@ class Migrations_Controller extends Core\Controllers\Backend {
         }
         
         // шаблон файла миграции
-        $template = $this->load->view('migrations/template', array('name'=>$name), TRUE);
+        $template = $this->load->view('admin/template', array('name'=>$name), TRUE);
         
         // создаем файл
         file_put_contents($file_path, $template);

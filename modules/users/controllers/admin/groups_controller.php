@@ -136,6 +136,16 @@ class Groups_Controller extends Core\Controllers\Backend {
             }
         }
         
+        // хлебные крошки
+        if( $group )
+        {
+            $this->breadcrumbs->add_item('Редактирование', 'users/admin/groups/add');
+        }
+        else
+        {
+            $this->breadcrumbs->add_item('Создание', 'users/admin/groups');
+        }
+        
         $this->render('groups/add', array(
             'group'=>$group
         ));

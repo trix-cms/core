@@ -111,7 +111,7 @@ class Users_Controller extends Core\Controllers\Backend {
         
         $this->breadcrumbs->add_item('Редактирование', 'admin/users/edit/'. $item->id);
 
-        $this->template->render('edit', array(
+        $this->render('edit', array(
             'item'=>$item,
             'groups_options'=>$groups_options
         ));
