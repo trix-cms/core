@@ -16,7 +16,7 @@ class Scaffold_Controller extends Core\Controllers\Backend {
         $this->template->append_metadata(Module::css('scaffold.css', 'scaffold'));
 
         // layout
-        $this->template->set_layout('admin/layout');
+        $this->template->set_layout('layout');
     }
     
     /**

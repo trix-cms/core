@@ -34,7 +34,7 @@
         
 <?php if( $rows ):?>
     <?php Decorator::table_view(array(
-            'view'=>'admin/_row',
+            'view'=>'_row',
             'items'=>$rows,
             'headings'=>$fields_headings
         ))?>

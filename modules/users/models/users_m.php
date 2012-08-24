@@ -6,7 +6,6 @@ class Users_m extends MY_Model {
     
     public function get_all()
     {
-        $this->where('id !=', 0);
         return parent::get_all();
     }
     

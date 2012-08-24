@@ -14,7 +14,7 @@
         </thead>
         <tbody>
             <?php foreach($categories as $category):?>
-                <?php $this->load->view('categories::admin/_row', array('item'=>$category), FALSE, 'categories')?>
+                <?php $this->load->view('categories::_row', array('item'=>$category), FALSE, 'categories')?>
             <?php endforeach;?>
         </tbody>
     </table>

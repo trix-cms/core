@@ -16,7 +16,7 @@ class Permissions_Controller extends Core\Controllers\Backend {
         $this->breadcrumbs->add_item('Права доступа', 'admin/permissions');
         
         // вложенный шаблон
-        $this->template->set_layout('admin/layout');
+        $this->template->set_layout('layout');
     }
     
     function action_index()

@@ -18,7 +18,7 @@
 
 <?php Decorator::table_view(array(
     'items'=>$groups,
-    'view'=>'users::admin/groups/_item',
+    'view'=>'groups/_item',
     'headings'=>array(
         'Название',
         'Slug',

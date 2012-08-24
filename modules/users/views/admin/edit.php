@@ -12,7 +12,7 @@
     </ul>
 
     <h3>
-        Редактирование пользователя #<?php echo $item->id .' '.$item->login?>
+        Редактирование пользователя
     </h3>
 </div>
 
@@ -21,6 +21,17 @@
             'class'=>'form-horizontal'
         ),
         'inputs'=>array(
+            array(
+                'type'=>'text',
+                'label'=>'ID',
+                'name'=>'id',
+                'value'=>$item ? $item->id : '',
+                'visibility'=>$item,
+                'attr'=>array(
+                    'disabled'=>'disabled',
+                    'style'=>'width: 30px; text-align: center;'
+                )
+            ),
             array(
                 'type'=>'text',
                 'label'=>'Логин',
@@ -37,7 +48,11 @@
                 'type'=>'select',
                 'label'=>'Группа',
                 'name'=>'group_slug',
-                'value'=>$groups_options
+                'options'=>$groups_options,
+                'value'=>$item ? $item->group_slug : set_value('group_slug'),
+                'attr'=>array(
+                    $item->id == $this->user->id ? 'disabled' : 'enabled'=>''
+                )
             ),
             array(
                 'type'=>'submit',

@@ -32,7 +32,7 @@
                 <?php $i=0; foreach($tabs as $tab):?>
                     <div class="tab-pane<?=$i==0 ? ' active' : ''?>" id="<?=$tab->tabs?>">
                     <?php $i=0; foreach($settings[$tab->tabs] as $setting):?>
-                        <?php $this->load->view('settings::admin/_item', array('item'=>$setting), FALSE)?>
+                        <?php $this->load->view('settings::_item', array('item'=>$setting), FALSE)?>
                     <?php $i++; endforeach?>
                     </div>
                 <?php $i++; endforeach;?>
@@ -41,7 +41,7 @@
         <?php else:?>     
                		
             <?php foreach($settings as $setting):?>
-                <?php $this->load->view('settings::admin/_item', array('item'=>$setting), FALSE)?>
+                <?php $this->load->view('settings::_item', array('item'=>$setting), FALSE)?>
             <?php endforeach?>
             
         <?php endif;?>

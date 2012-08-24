@@ -41,7 +41,7 @@ class Permissions {
         // если не указан модуль, то проверяем текущий
         if( !$module )
         {
-            $module = $this->CI->router->fetch_module();
+            $module = $this->CI->module;
         }
 
         // проверяем доступ в админку

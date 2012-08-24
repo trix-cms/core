@@ -25,7 +25,7 @@
                         'edit',
                         array(
                             'class'=>'delete ajax-delete confirm',
-                            'data-confirm'=>'Удалить?',
+                            'data-confirm'=>'Все пользователи из этой группы будут перемещены в группу авторизованные пользователи. Удалить группу?',
                             'rel'=>'tooltip',
                             'data-title'=>'Удалить'
                         )

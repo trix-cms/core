@@ -22,7 +22,7 @@ class News_Controller extends Core\Controllers\Backend {
         $this->breadcrumbs->add_item('Новости', 'admin/news');
         
         // вложенный шаблон
-        $this->template->set_layout('admin/layout');
+        $this->template->set_layout('layout');
     }
 
     /**

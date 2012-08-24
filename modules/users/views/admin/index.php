@@ -5,7 +5,7 @@
 </div>
 
 <?php Decorator::table_view(array(
-    'view'=>'admin/_item',
+    'view'=>'_item',
     'items'=>$users,
     'no_items'=>'<p>Нет пользователей</p>',
     'headings'=>array(

@@ -10,7 +10,7 @@ class Groups_Controller extends Core\Controllers\Backend {
         $this->load->model('groups_m');
         
         // вложенный шаблон
-        $this->template->set_layout('admin/groups/layout');
+        $this->template->set_layout('groups/layout');
         
         // хлебные крошки
         $this->breadcrumbs->add_item('Группы', 'users/admin/groups');
@@ -37,19 +37,22 @@ class Groups_Controller extends Core\Controllers\Backend {
         $group = $this->groups_m->by_slug($slug)->get_one();
         
         // удаляем если не дефолтная
-        if( $group->default == 0 )
+        if( !$group->default )
         {
+            // перемещаем всех пользователей в другую группу
+            $this->users_m->by_group_slug($slug)->set_group_slug('users')->update();
+            
             $this->groups_m->by_slug($slug)->delete();
             
             // удаляем запись прав
             $this->permissions_m->by_group_slug($slug)->delete();
         }
         
-        
-        
         if( $this->is_ajax() )
         {
-            echo 'ok';   
+            echo json_encode(array(
+                'success'=>TRUE
+            ));
         }
         else
         {

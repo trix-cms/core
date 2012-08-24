@@ -16,7 +16,7 @@ class Migrations_Controller extends Core\Controllers\Backend {
         $this->breadcrumbs->add_item('Миграции', 'admin/migrations');
         
         // layout
-        $this->template->set_layout('admin/layout');
+        $this->template->set_layout('layout');
     }
     
     function action_index()

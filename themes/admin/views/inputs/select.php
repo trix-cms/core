@@ -3,8 +3,8 @@
         <?php echo $label?>:
     </label>
     <div class="controls">
-        <select name="<?php echo $name?>">
-            <?php echo HTML::options($options, $default)?>
+        <select name="<?php echo $name?>" <?=isset($attr) ? HTML::parse_attributes($attr) : ''?>>
+            <?php echo HTML::options($options, $value)?>
         </select>
     </div>
 </div>

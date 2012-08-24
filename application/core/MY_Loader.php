@@ -20,6 +20,8 @@ class MY_Loader extends MX_Loader {
         // расположение модулей
         $path = CI::$APP->config->item('modules_locations');
         $modules_locations = key( $path );
+        
+        $admin_folder = CI::$APP->is_backend ? 'admin/' : '';
 
         if( strstr($view, '::') !== FALSE )
         {
@@ -29,18 +31,18 @@ class MY_Loader extends MX_Loader {
     		$this->_ci_view_paths[] = CI::$APP->config->item('theme_location').CI::$APP->template->theme . '/views/' . $module .'/';
             
             // поиск в текущем модуле
-            $this->_ci_view_paths[] = $modules_locations . $module .'/'. 'views/';
+            $this->_ci_view_paths[] = $modules_locations . $module .'/'. 'views/' . $admin_folder;
             
             // поиск в системной папке
-            $this->_ci_view_paths[] = APPPATH . 'views/';
+            $this->_ci_view_paths[] = APPPATH . 'views/' . $admin_folder;
         }
         else
         {
             // поиск в теме
-    		$this->_ci_view_paths[] = CI::$APP->config->item('theme_location').CI::$APP->template->theme.'/views/';
+    		$this->_ci_view_paths[] = CI::$APP->config->item('theme_location') . CI::$APP->template->theme . '/views/';
             
             // поиск в системной папке
-            $this->_ci_view_paths[] = APPPATH . 'views/';
+            $this->_ci_view_paths[] = APPPATH . 'views/' . $admin_folder;
         }
         
 		return $this->_ci_load(array(

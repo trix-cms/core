@@ -16,7 +16,7 @@ class Users_Controller extends Core\Controllers\Backend {
         $this->breadcrumbs->add_item('Пользователи', 'admin/users');
         
         // вложенный шаблон
-        $this->template->set_layout('admin/layout');
+        $this->template->set_layout('layout');
     }
 
     /**
@@ -48,11 +48,6 @@ class Users_Controller extends Core\Controllers\Backend {
         ));
     }
     
-    function action_settings()
-    {
-        $this->settings->display();
-    }
-    
     /**
      * Отмечаем что пользователь проверен
      */
@@ -65,48 +60,43 @@ class Users_Controller extends Core\Controllers\Backend {
        URL::referer(); 
     }
 
+    /**
+     * Редактирование
+     */
     function action_edit($id)
     {
-        $item  = $this->users_m->get_by_id($id);
+        $item = $this->users_m->get_by_id($id);
+        
+        if( $item->id == 0 )
+        {
+            show_error('Гостевую запись нельзя редактировать');
+        }
         
         if( $this->input->post('submit') OR $this->input->post('apply') )
         {
             $data = array(
-                'group_slug'=>$this->input->post('group_slug'),
                 'login'=>$this->input->post('login'),
                 'email'=>$this->input->post('email')
             );
             
-            if( $this->auth->can_edit($item, $data) )
+            // пользователь не может изменить свою группу
+            if( $item->id != $this->user->id )
             {
-                if( Uploadify::file() )
-                {
-                    $data['avatar'] = Uploadify::file();
-                    Uploadify::move(Users_Config::AVATAR_PATH);
-                    Uploadify::clear();
-                }
-                
-                $this->users_m->update_by_id($id, $data);
-    
-                $this->session->set_flashdata('success', 'Изменения сохранены');
-    
-                $this->input->post('apply') ? URL::refresh() : URL::redirect('admin/users');
+                $data['group_slug'] = $this->input->post('group_slug');
             }
-            else
-            {
-                $this->template->set_message('error', $this->auth->get_errors());
-            }            
+            
+            $this->users_m->by_id($id)->update($data);
+
+            $this->session->set_flashdata('success', 'Изменения сохранены');
+
+            $this->input->post('apply') ? URL::refresh() : URL::redirect('admin/users');         
         }
         
         // group options
         $groups = $this->groups_m->get_all();
         foreach($groups as $group)
         {
-            $groups_options[] = array(
-                'value'=>$group->slug,
-                'label'=>$group->name,
-                'selected'=>$item->group_slug == $group->slug
-            );
+            $groups_options[$group->slug] = $group->name;
         }
         
         $this->breadcrumbs->add_item('Редактирование', 'admin/users/edit/'. $item->id);
@@ -145,54 +135,5 @@ class Users_Controller extends Core\Controllers\Backend {
         }
 
         URL::referer();
-    }
-
-    function search()
-    {
-        $this->template->add_js('jquery.paginate.js');
-        $this->template->add_js('dynamic_list.js');
-        $this->template->add_css('paginate.style.css');
-        $this->template->build('account/search');
-    }
-
-    function group_delete()
-    {
-        $slug = $this->uri->segment(4);
-
-        $this->db->where('slug', $slug);
-        $this->db->delete('account_groups');
-
-        $this->db->where('group_slug', $slug);
-        $this->db->delete('permissions');
-
-        $this->session->set_flashdata('success', 'Группа удалена');
-
-        URL::redirect('admin/account/groups');
-    }
-
-    function action_activate_user($user_id, $activation_code)
-    {
-        $this->auth->activation($user_id, $activation_code);
-
-        $user = $this->users_m->get(array('id' => $user_id))->row();
-
-        $this->_activation_email($user);
-
-        $this->template->set_message('success', 'Пользователь активирован');
-
-        URL::referer();
-    }
-
-    function _activation_email($user)
-    {
-        $this->load->library('email');
-
-        $message = "Ваш аккунт успешно активирован.";
-
-        $this->email->from('noreply@kavicom.ru', '');
-        $this->email->to($user->email);
-        $this->email->subject('Ваш аккаунт успешно активирован');
-        $this->email->message($message);
-        $this->email->send();
     }
 }

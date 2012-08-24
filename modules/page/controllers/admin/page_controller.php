@@ -13,7 +13,7 @@ class Page_Controller extends Core\Controllers\Backend {
         $this->breadcrumbs->add_item('Страницы', 'admin/page');
         
         // layout
-        $this->template->set_layout('admin/layout');
+        $this->template->set_layout('layout');
     }
 
     /**

@@ -16,7 +16,7 @@
 <?php if( $news ):?>
     <form class="table-form">
         <?php Decorator::table_view(array(
-            'view'=>'admin/_row',
+            'view'=>'_row',
             'items'=>$news,
             'headings'=>array(
                 'ID',
