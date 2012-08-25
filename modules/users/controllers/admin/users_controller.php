@@ -1,6 +1,6 @@
 <?php
 
-class Users_Controller extends Core\Controllers\Backend {
+class Users_Controller extends Controllers\Backend {
 
     function __construct()
     {

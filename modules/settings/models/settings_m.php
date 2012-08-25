@@ -1,3 +1,3 @@
 <?php
 
-class Settings_m extends MY_Model {}
+class Settings_m extends Trix_Model {}

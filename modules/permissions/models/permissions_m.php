@@ -1,6 +1,6 @@
 <?php
 
-class Permissions_m extends MY_Model {
+class Permissions_m extends Trix_Model {
     
     public $table = 'permissions';
 }

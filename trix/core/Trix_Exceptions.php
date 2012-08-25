@@ -1,6 +1,6 @@
 <?php
 
-class MY_Exceptions extends CI_Exceptions {
+class Trix_Exceptions extends CI_Exceptions {
     
     function show_404()
     {

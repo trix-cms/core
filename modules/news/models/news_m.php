@@ -1,4 +1,4 @@
 <?php
 
-class News_m extends MY_Model {
+class News_m extends Trix_Model {
 }

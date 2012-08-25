@@ -2,14 +2,13 @@
 
 class WYSIWYG {
     
-    const TINYMCE = 1;
+    const TINYMCE = 'Tinymce';
+    const REDAKTOR = 'Redactor';
+    const CKEDITOR = 'Ckeditor';
     
     private static $instance = null;
     
-    private function __construct()
-    {
-        
-    }
+    private function __construct(){}
     
     static function init($wysiwyg = self::TINYMCE)
     {
@@ -22,19 +21,8 @@ class WYSIWYG {
         
         if( self::$instance->is_show() )
         {
-            switch( $wysiwyg )
-            {
-                case self::TINYMCE:
-                default:
-                    self::$instance->tinymce();
-            }
+            call_user_func('WYSIWYG\Providers\\' . $wysiwyg .'::run');
         }
-    }
-    
-    function tinymce()
-    {
-        echo Assets::js('wysiwyg/tiny_mce/tiny_mce.js');
-        echo Assets::js('wysiwyg/tiny_mce/admin-setup.js');
     }
     
     function is_show()

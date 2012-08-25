@@ -1,6 +1,6 @@
 <?php
 
-class Categories_m extends MY_Model {
+class Categories_m extends Trix_Model {
 
     public $table = 'categories';
 

@@ -1,6 +1,6 @@
 <?php
 
-class Notification {
+class Alert {
     
     const INFO = 1;
     const SUCCESS = 2;
@@ -13,12 +13,12 @@ class Notification {
     
     function __construct()
     {
-        $notification = CI::$APP->session->flashdata('notification');
+        $alert = CI::$APP->session->flashdata('alert');
 
-        if($notification)
+        if($alert)
         {
-            $this->message = $notification['message'];
-            $this->type = $notification['type'];
+            $this->message = $alert['message'];
+            $this->type = $alert['type'];
             $this->has_message = TRUE;
         }
     }
@@ -32,7 +32,7 @@ class Notification {
     
     function set_flash($type, $message)
     {
-        CI::$APP->session->set_flashdata('notification', array(
+        CI::$APP->session->set_flashdata('alert', array(
             'type'=>$type,
             'message'=>$message
         ));
@@ -42,7 +42,7 @@ class Notification {
     {
         if( $this->has_message )
         {
-            $view = '::notification/' . $this->type_name($this->type);
+            $view = 'alert/' . $this->type_name($this->type);
             
             CI::$APP->load->view($view, array(
                 'message'=>$this->message

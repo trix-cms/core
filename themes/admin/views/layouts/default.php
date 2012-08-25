@@ -31,7 +31,7 @@
                     'show_on_index'=>FALSE
                 ))?>
                 
-                <?php $this->notification->display()?>
+                <?php $this->alert->display()?>
             
                 <?=$content?>
             </div>

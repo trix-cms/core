@@ -1,6 +1,6 @@
 <?php
 
-class MY_Model extends CI_Model {
+class Trix_Model extends CI_Model {
 
     public $table = null;
     public $primary_key = 'id';

@@ -1,12 +1,9 @@
 <?php
 
-namespace Core\Controllers;
+namespace Controllers;
 
-/**
- * Публичный контроллер
- */
-class Frontend extends Base {
-    
+class Frontend extends Base
+{
     function __construct()
     {
         parent::__construct();

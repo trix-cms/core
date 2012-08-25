@@ -1,6 +1,6 @@
 <?php
 
-class Scaffold_m extends MY_Model {
+class Scaffold_m extends Trix_Model {
     
     public $table = false;
     

@@ -40,16 +40,16 @@ class Default_Controller extends Users\Controllers\Profile {
                     
                     $this->auth->clear_cache();
     
-                    $this->notification->set(Notification::SUCCESS, 'Пароль был успешно изменен');
+                    $this->alert->set(Notification::SUCCESS, 'Пароль был успешно изменен');
                 }
                 else
                 {
-                    $this->notification->set(Notification::ERROR, 'Неверно введен старый пароль');
+                    $this->alert->set(Notification::ERROR, 'Неверно введен старый пароль');
                 }
             }
             else
             {
-                $this->notification->set(Notification::ERROR, validation_errors());
+                $this->alert->set(Notification::ERROR, validation_errors());
             }
         }
         
@@ -86,14 +86,14 @@ class Default_Controller extends Users\Controllers\Profile {
                 $this->session->unset_userdata('user');
 
                 // информационные сообщение
-                $this->notification->set(Notification::SUCCESS, 'Изменения сохранены');
+                $this->alert->set(Notification::SUCCESS, 'Изменения сохранены');
 
                 // редиректим
                 URL::referer();
             }
             else
             {
-                $this->notification->set(Notification::ERROR, validation_errors());
+                $this->alert->set(Notification::ERROR, validation_errors());
             }
     }
 
@@ -176,13 +176,13 @@ class Default_Controller extends Users\Controllers\Profile {
 
                 $this->users_m->where('id', $this->user->id)->update(array('avatar' => $data['file_name']));
 
-                $this->notification->set(Notification::SUCCESS, 'Аватар успешно загружен');
+                $this->alert->set(Notification::SUCCESS, 'Аватар успешно загружен');
                 
                 $this->auth->clear_cache();
             }
             else
             {
-                $this->notification->set(Notification::ERROR, $this->upload->display_errors());
+                $this->alert->set(Notification::ERROR, $this->upload->display_errors());
             }
         }
         

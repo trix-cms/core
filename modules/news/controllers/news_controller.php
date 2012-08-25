@@ -3,7 +3,7 @@
 /**
  * Публичная часть модуля новостей
  */
-class News_Controller extends Core\Controllers\Frontend {
+class News_Controller extends Controllers\Frontend {
 
     function __construct()
     {

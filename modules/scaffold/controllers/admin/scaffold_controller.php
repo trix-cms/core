@@ -1,6 +1,6 @@
 <?php
 
-class Scaffold_Controller extends Core\Controllers\Backend {
+class Scaffold_Controller extends Controllers\Backend {
     
     function __construct()
     {
@@ -93,7 +93,7 @@ class Scaffold_Controller extends Core\Controllers\Backend {
         }
         else
         {
-            $this->notification->set(Notification::SUCCESS, 'Запись удалена');
+            $this->alert->set(Notification::SUCCESS, 'Запись удалена');
         
             URL::referer();
         }

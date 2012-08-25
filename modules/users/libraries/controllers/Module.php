@@ -2,7 +2,7 @@
 
 namespace Users\Controllers;
 
-class Module extends \Core\Controllers\Frontend {
+class Module extends \Controllers\Frontend {
     
     function __construct()
     {

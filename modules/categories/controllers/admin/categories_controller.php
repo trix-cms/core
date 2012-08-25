@@ -1,6 +1,6 @@
 <?php
 
-class Categories_Controller extends Core\Controllers\Backend {
+class Categories_Controller extends Controllers\Backend {
     
     function __construct()
     {

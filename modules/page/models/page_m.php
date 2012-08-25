@@ -1,3 +1,3 @@
 <?php
 
-class Page_m extends MY_Model {}
+class Page_m extends Trix_Model {}

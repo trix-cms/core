@@ -1,6 +1,6 @@
 <?php
 
-class Settings_Controller extends Core\Controllers\Backend {
+class Settings_Controller extends Controllers\Backend {
     
     function __construct()
     {

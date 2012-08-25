@@ -3,7 +3,7 @@
 /* load the MX_Loader class */
 require APPPATH."third_party/MX/Loader.php";
 
-class MY_Loader extends MX_Loader {
+class Trix_Loader extends MX_Loader {
     
     /** Load a module view **/
 	public function view($view, $vars = array(), $return = FALSE) 

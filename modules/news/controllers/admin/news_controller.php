@@ -3,7 +3,7 @@
 /**
  * Админская часть модуля новостей
  */
-class News_Controller extends Core\Controllers\Backend {
+class News_Controller extends Controllers\Backend {
     
     public $upload_data;
 
@@ -106,7 +106,7 @@ class News_Controller extends Core\Controllers\Backend {
                 {                    
                     $this->news_m->by_id($news->id)->update($data);
                     
-                    $this->notification->set(Notification::SUCCESS, 'Изменения сохранены');
+                    $this->alert->set(Notification::SUCCESS, 'Изменения сохранены');
                     
                     if( $this->input->post('apply') )
                     {                        
@@ -122,7 +122,7 @@ class News_Controller extends Core\Controllers\Backend {
                 {
                     $data['created_on'] = time();
                     
-                    $this->notification->set(Notification::SUCCESS, 'Новость добавлена');
+                    $this->alert->set(Notification::SUCCESS, 'Новость добавлена');
                     
                     $news_id = $this->news_m->insert($data);
                     
@@ -132,7 +132,7 @@ class News_Controller extends Core\Controllers\Backend {
             }
             else
             {
-                $this->notification->set(Notification::ERROR, validation_errors());
+                $this->alert->set(Notification::ERROR, validation_errors());
             }
         }
         

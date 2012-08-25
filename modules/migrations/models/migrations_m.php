@@ -1,6 +1,6 @@
 <?php
 
-class Migrations_m extends MY_Model {
+class Migrations_m extends Trix_Model {
     
     public $table = 'migrations';
     

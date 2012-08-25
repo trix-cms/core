@@ -1,11 +1,11 @@
 <?php
 
-namespace Core\Controllers;
+namespace Controllers;
 
 use CI;
 
-class Backend extends Base {
-
+class Backend extends Base
+{
     function __construct()
     {
         parent::__construct();

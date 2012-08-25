@@ -55,7 +55,7 @@ class Users_Controller extends Users\Controllers\Module {
             }
             else
             {
-                $this->notification->set(Notification::ERROR, validation_errors());
+                $this->alert->set(Notification::ERROR, validation_errors());
             }
         }
 
@@ -124,7 +124,7 @@ class Users_Controller extends Users\Controllers\Module {
             }
             else
             {
-                $this->notification->set(Notification::ERROR, validation_errors());
+                $this->alert->set(Notification::ERROR, validation_errors());
             }
         }
         
@@ -169,14 +169,14 @@ class Users_Controller extends Users\Controllers\Module {
                 $this->session->unset_userdata('user');
                 
                 // уведомительное сообщение
-                $this->notification->set(Notification::SUCCESS, 'Спасибо за регистрацию на нашем сайте.');
+                $this->alert->set(Notification::SUCCESS, 'Спасибо за регистрацию на нашем сайте.');
                 
                 // редиректим на главную
                 URL::redirect();
             }
             else
             {
-                $this->notification->set(Notification::ERROR, validation_errors());
+                $this->alert->set(Notification::ERROR, validation_errors());
             }
         }
         
@@ -240,12 +240,12 @@ class Users_Controller extends Users\Controllers\Module {
                 }
                 else
                 {
-                    $this->notification->set(Notification::ERROR, 'Пользователь с указанными данными не найден');
+                    $this->alert->set(Notification::ERROR, 'Пользователь с указанными данными не найден');
                 }
             }
             else
             {
-                $this->notification->set(Notification::ERROR, validation_errors());
+                $this->alert->set(Notification::ERROR, validation_errors());
             }
         }
         
@@ -342,7 +342,7 @@ class Users_Controller extends Users\Controllers\Module {
             }
             else
             {
-                $this->notification->set(Notification::ERROR, validation_errors());
+                $this->alert->set(Notification::ERROR, validation_errors());
             }
         }
 

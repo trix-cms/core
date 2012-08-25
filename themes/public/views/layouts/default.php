@@ -9,7 +9,7 @@
     <div class="wrap">
         <div class="container">
     
-            <?php $this->notification->display()?>
+            <?php $this->alert->display()?>
         
             <div class="row" style="margin-left: 0; padding-bottom: 57px; padding-top: 50px;">
                 <div class="well" style="border: 1px solid #ccc;">

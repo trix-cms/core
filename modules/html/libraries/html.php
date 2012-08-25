@@ -1,6 +1,7 @@
 <?php
 
-class HTML {
+class HTML 
+{
     
     static function description($content)
     {

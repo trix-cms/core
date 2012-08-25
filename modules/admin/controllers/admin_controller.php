@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Controller extends Core\Controllers\Base {
+class Admin_Controller extends Controllers\Base {
 
     function __construct()
     {

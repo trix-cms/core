@@ -1,6 +1,6 @@
 <?php
 
-class Modules_Controller extends Core\Controllers\Backend {
+class Modules_Controller extends Controllers\Backend {
     
     private $addons_url = 'http://trix/addons/get';
     

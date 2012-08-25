@@ -1,1 +1,1 @@
-<?=__FILE__?>
+<?php echo HTML::a('test', 'tests')?>
