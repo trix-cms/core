@@ -3,7 +3,7 @@
 /**
  * Контроллер ошибок
  */
-class Errors_Controller extends Core\Controllers\Base {
+class Errors_Controller extends Controllers\Base {
     
     function __construct()
     {
