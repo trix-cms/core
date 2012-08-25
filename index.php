@@ -83,7 +83,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = 'application';
+	$application_folder = 'trix';
 
 /*
  * --------------------------------------------------------------------
