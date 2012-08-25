@@ -121,3 +121,7 @@ hr {
     margin-top: -4px;
     display: inline-block;
 }
+.well {
+    background: #fafafa;
+    border: 1px solid #ddd;
+}

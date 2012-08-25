@@ -1,18 +1,36 @@
 <tr>
-    <td>
-    	<a class="toggle-table-switch" href="#" title="Show options" rel="tooltip">Options</a>
-    	<ul class="table-switch" style="display: none; ">
-    	</ul>
+    <td style="width: 10%;">
+        <?=URL::anchor(
+            'admin/'. $item->name,
+            $item->title
+        )?>
     </td>
-    <td style="text-align: left;"><?php echo $item->title?></td>
-    <td><span class="tag <?php echo $item->enable ? 'green' : 'gray'?>"><?php echo $item->enable ? 'On' : 'Off'?></span></td>
     <td>
+        <?=$item->description?>
+    </td>
+    <td style="width: 100px; text-align: center;">
+        <?php if( $item->is_frontend ):?>
+            <span class="label <?=$item->enable ? 'label-success' : 'label-important'?>">
+                <?php echo $item->enable ? 'Включен' : 'Отключен'?>
+            </span>
+        <?php endif?>
+    </td>
+    <td style="width: 50px; text-align: center;">
     	<ul class="actions">
-    		<li>
-                <?php echo URL::anchor('', 'view', 'class="view" target="_blank" title="View item" rel="tooltip"')?>
-            </li>
-    		<li><?php echo URL::anchor('', 'edit', 'class="edit" title="Edit Item" rel="tooltip"')?></li>
-    		<li><?php echo URL::anchor('', 'edit', 'class="delete" title="Delete Item" rel="tooltip"')?></li>
+            <?php if( !$item->is_core ):?>
+        		<li>
+                    <?php echo URL::anchor(
+                        '', 
+                        'edit', 
+                        array(
+                            'class'=>'delete ajax-delete confirm',
+                            'title'=>'Удалить',
+                            'rel'=>'tooltip',
+                            'confirm'=>'Удалить модуль?'
+                        )
+                    )?>
+                </li>
+            <?php endif?>
     	</ul>
     </td>
 </tr>

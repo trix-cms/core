@@ -16,6 +16,12 @@
         </li>
         <li<?=$this->module == 'settings' ? ' class="active"' : ''?>>
             <?=URL::anchor(
+                'admin/modules',
+                'Модули'
+            )?>
+        </li>
+        <li<?=$this->module == 'settings' ? ' class="active"' : ''?>>
+            <?=URL::anchor(
                 'admin/settings',
                 'Настройки сайта'
             )?>
