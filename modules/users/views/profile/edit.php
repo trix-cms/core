@@ -58,7 +58,7 @@
                         Смена пароля
                     </h3>
                     
-                    <?php echo Decorator::form_view(array(
+                    <?php echo HTML\Form::display(array(
                         'attr'=>array(
                             'class'=>'form-horizontal',
                             'action'=>URL::site_url('users/profile/password')

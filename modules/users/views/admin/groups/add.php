@@ -14,7 +14,7 @@
     <h3>Создание</h3>
 </div>
 
-<?php Decorator::form_view(array(
+<?php HTML\Form::display(array(
     'attr'=>array(
         'class'=>'form-horizontal'
     ),

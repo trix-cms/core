@@ -1,6 +1,6 @@
 <?php
 
-class Permissions_Controller extends Controllers\Backend {
+class Permissions_Controller extends Trix\Controllers\Backend {
     
     function __construct()
     {
@@ -54,7 +54,7 @@ class Permissions_Controller extends Controllers\Backend {
                                 'has_backend_access'=>$this->input->post('has_backend_access') ? 1 : 0
                             ));
             
-            $this->set_message(Notification::SUCCESS, 'Изменения сохранены');
+            $this->set_message(Trix\Alert::SUCCESS, 'Изменения сохранены');
             
             URL::referer();
         }

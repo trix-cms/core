@@ -3,7 +3,7 @@
 /**
  * Админская часть модуля новостей
  */
-class News_Controller extends Controllers\Backend {
+class News_Controller extends Trix\Controllers\Backend {
     
     public $upload_data;
 
@@ -55,21 +55,6 @@ class News_Controller extends Controllers\Backend {
             'news'=>$news
         ));    
     }
-    
-    function action_settings()
-    {
-        $this->settings->display();
-    }
-    
-    /**
-     * Категории
-     */
-    function action_categories()
-    {        
-        $categories_lib = new Categories;
-        
-        $categories_lib->display();
-    }
 
     /**
      * Редактирование новости
@@ -106,7 +91,7 @@ class News_Controller extends Controllers\Backend {
                 {                    
                     $this->news_m->by_id($news->id)->update($data);
                     
-                    $this->alert->set(Notification::SUCCESS, 'Изменения сохранены');
+                    $this->alert->set_flash(Trix\Alert::SUCCESS, 'Изменения сохранены');
                     
                     if( $this->input->post('apply') )
                     {                        
@@ -122,7 +107,7 @@ class News_Controller extends Controllers\Backend {
                 {
                     $data['created_on'] = time();
                     
-                    $this->alert->set(Notification::SUCCESS, 'Новость добавлена');
+                    $this->alert->set_flash(Trix\Alert::SUCCESS, 'Новость добавлена');
                     
                     $news_id = $this->news_m->insert($data);
                     
@@ -132,7 +117,7 @@ class News_Controller extends Controllers\Backend {
             }
             else
             {
-                $this->alert->set(Notification::ERROR, validation_errors());
+                $this->alert->set(Trix\Alert::ERROR, validation_errors());
             }
         }
         

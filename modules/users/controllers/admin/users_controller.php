@@ -1,6 +1,6 @@
 <?php
 
-class Users_Controller extends Controllers\Backend {
+class Users_Controller extends Trix\Controllers\Backend {
 
     function __construct()
     {

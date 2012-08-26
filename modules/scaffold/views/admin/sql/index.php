@@ -2,7 +2,7 @@
     <h3>SQL</h3>
 </div>
 
-<?php echo Decorator::form_view(array(
+<?php echo HTML\Form::display(array(
     'attr'=>array(
         'enctype'=>'multipart/form-data',
         'class'=>'form-horizontal'

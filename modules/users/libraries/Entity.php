@@ -4,7 +4,7 @@ namespace Users;
 
 use CI;
 
-class Entity extends \Entity {
+class Entity extends \Trix\Model\Entity {
     
     static $guest_name = 'Гость';
     

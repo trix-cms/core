@@ -1,6 +1,6 @@
 <?php
 
-class Settings_Controller extends Controllers\Backend {
+class Settings_Controller extends Trix\Controllers\Backend {
     
     function __construct()
     {
@@ -21,7 +21,7 @@ class Settings_Controller extends Controllers\Backend {
             $this->settings_m->where('slug', $setting->slug)->set_value($this->input->post($setting->slug))->update();
         }
         
-        $this->set_message(Notification::SUCCESS, 'Настройки сохранены');
+        $this->alert->set_flash(Trix\Alert::SUCCESS, 'Настройки сохранены');
 
         URL::referer();
     } 

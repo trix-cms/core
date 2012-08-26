@@ -5,7 +5,7 @@
 </div>
 
 <ul>
-    <?php Decorator::list_view(array(
+    <?php HTML\TList::display(array(
         'items'=>$groups,
         'view'=>'_item'
     ))?>

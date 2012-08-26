@@ -33,7 +33,7 @@
 </div>
         
 <?php if( $rows ):?>
-    <?php Decorator::table_view(array(
+    <?php HTML\Table::display(array(
             'view'=>'_row',
             'items'=>$rows,
             'headings'=>$fields_headings

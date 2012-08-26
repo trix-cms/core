@@ -1,7 +1,11 @@
 <?php
 
-class Auth extends Library {
+namespace Users;
 
+use CI;
+
+class Auth
+{
     function __construct()
     {        
         $this->load->model('users/users_m');
@@ -148,5 +152,10 @@ class Auth extends Library {
     function check_reset_token($email, $token)
     {
         return $this->users_m->by_email($email)->where('reset_token', $token)->count() == 1;
+    }
+    
+    function __get($key)
+    {
+        return CI::$APP->$key;
     }
 }

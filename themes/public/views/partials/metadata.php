@@ -9,12 +9,12 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <?=Assets::js('bootstrap.min.js')?>
-<?=Theme::js('scripts.js')?>
+<?=Assets::theme_js('scripts.js')?>
 
 <?=Assets::css('bootstrap.min.css')?>
-<?=Theme::css('main.css')?>
+<?=Assets::theme_css('main.css')?>
 <!--[if lt IE 9]>
-  <?=Theme::css('ie.css')?>
+  <?=Assets::theme_css('ie.css')?>
 <![endif]-->
 
 <?=$this->template->metadata()?>

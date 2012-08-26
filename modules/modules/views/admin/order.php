@@ -5,7 +5,7 @@
 		</header>
         <section>
         <h3 class="clearfix">Порядок модулей в меню</h3>
-            <?php Decorator::table_view(array(
+            <?php HTML\Table::display(array(
                 'table_template'=>'_sortable_table',
                 'view'=>'admin/_sort_row',
                 'items'=>$modules,

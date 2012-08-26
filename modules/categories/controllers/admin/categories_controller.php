@@ -1,6 +1,6 @@
 <?php
 
-class Categories_Controller extends Controllers\Backend {
+class Categories_Controller extends Trix\Controllers\Backend {
     
     function __construct()
     {
@@ -10,7 +10,7 @@ class Categories_Controller extends Controllers\Backend {
         $this->load->model('categories/categories_m');
         
         // стили
-        $this->template->append_metadata(Module::css('admin.css', 'categories'));
+        $this->template->append_metadata(Assets::module_css('admin.css', 'categories'));
     }
     
     function action_edit($id)

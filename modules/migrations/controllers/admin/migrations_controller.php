@@ -1,6 +1,6 @@
 <?php
 
-class Migrations_Controller extends Controllers\Backend {
+class Migrations_Controller extends Trix\Controllers\Backend {
     
     function __construct()
     {
@@ -47,12 +47,12 @@ class Migrations_Controller extends Controllers\Backend {
     {
         if ( ! $this->migration->current())
         {
-        	$this->alert->set(Notification::ERROR, $this->migration->error_string());
+        	$this->alert->set(Trix\Alert::ERROR, $this->migration->error_string());
         }
         else
         {
             $this->alert->set(
-                Notification::SUCCESS, 
+                Trix\Alert::SUCCESS, 
                 'Версия БД обновлена до '. $this->config->item('migration_version')
             );
         }
@@ -67,11 +67,11 @@ class Migrations_Controller extends Controllers\Backend {
     {
         if ( ! $this->migration->latest())
         {
-        	$this->alert->set(Notification::ERROR, $this->migration->error_string());
+        	$this->alert->set(Trix\Alert::ERROR, $this->migration->error_string());
         }
         else
         {
-            $this->alert->set(Notification::SUCCESS, 'Версия БД обновлена до последней');
+            $this->alert->set(Trix\Alert::SUCCESS, 'Версия БД обновлена до последней');
         }
         
         URL::referer();
@@ -84,12 +84,12 @@ class Migrations_Controller extends Controllers\Backend {
     {
         if ( ! $this->migration->version($version))
         {
-        	$this->alert->set(Notification::ERROR, $this->migration->error_string());
+        	$this->alert->set(Trix\Alert::ERROR, $this->migration->error_string());
         }
         else
         {
             $this->alert->set(
-                Notification::SUCCESS, 
+                Trix\Alert::SUCCESS, 
                 'БД обновлена до версии '. $version
             );
         }
@@ -120,7 +120,7 @@ class Migrations_Controller extends Controllers\Backend {
                 if( $this->create($name) )
                 {
                     // уведомительное сообщение
-                    $this->alert->set(Notification::SUCCESS, 'Файл миграции создан');
+                    $this->alert->set(Trix\Alert::SUCCESS, 'Файл миграции создан');
                     
                     // редиректим
                     URL::redirect('admin/migrations');
@@ -128,13 +128,13 @@ class Migrations_Controller extends Controllers\Backend {
                 else
                 {
                     // файл миграции не был создан по какой-то причине
-                    $this->alert->set(Notification::ERROR, $this->error_string);
+                    $this->alert->set(Trix\Alert::ERROR, $this->error_string);
                 }                
             }
             else
             {
                 // данные формы не прошли валидацию
-                $this->alert->set(Notification::ERROR, validation_errors());
+                $this->alert->set(Trix\Alert::ERROR, validation_errors());
             }
         }
         

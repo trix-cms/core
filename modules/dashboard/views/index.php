@@ -1,1 +1,1 @@
-<?php echo HTML::a('test', 'tests')?>
+<?php echo HTML\Tag::a('test', 'tests')?>

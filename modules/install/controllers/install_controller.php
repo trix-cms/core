@@ -1,6 +1,6 @@
 <?php
 
-class Install_Controller extends Controllers\Frontend
+class Install_Controller extends Trix\Controllers\Frontend
 {
     function action_index()
     {

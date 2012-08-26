@@ -1,6 +1,6 @@
 <?php
 
-class Groups_Controller extends Controllers\Backend {
+class Groups_Controller extends Trix\Controllers\Backend {
     
     function __construct()
     {
@@ -57,7 +57,7 @@ class Groups_Controller extends Controllers\Backend {
         else
         {
             // уведомление
-            $this->set_message(Notification::SUCCESS, 'Группа удалена');
+            $this->set_message(Trix\Alert::SUCCESS, 'Группа удалена');
             
             // редирект
             URL::redirect('users/admin/groups');
@@ -110,7 +110,7 @@ class Groups_Controller extends Controllers\Backend {
                     ));
                     
                     // уведомление
-                    $this->set_message(Notification::SUCCESS, 'Изменения сохранены');
+                    $this->set_message(Trix\Alert::SUCCESS, 'Изменения сохранены');
                 }
                 else
                 {
@@ -127,7 +127,7 @@ class Groups_Controller extends Controllers\Backend {
                     ));
                     
                     // уведомление
-                    $this->set_message(Notification::SUCCESS, 'Группа добавлена');
+                    $this->set_message(Trix\Alert::SUCCESS, 'Группа добавлена');
                 }
                 
                 // редирект
@@ -135,7 +135,7 @@ class Groups_Controller extends Controllers\Backend {
             }
             else
             {
-                $this->set_message(Notification::ERROR, validation_errors());
+                $this->set_message(Trix\Alert::ERROR, validation_errors());
             }
         }
         

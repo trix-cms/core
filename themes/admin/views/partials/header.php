@@ -14,7 +14,7 @@
                 $this->user->login
             )?>
         </li>
-        <li<?=$this->module == 'settings' ? ' class="active"' : ''?>>
+        <li<?=$this->module == 'modules' ? ' class="active"' : ''?>>
             <?=URL::anchor(
                 'admin/modules',
                 'Модули'

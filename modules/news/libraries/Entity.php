@@ -2,7 +2,7 @@
 
 namespace News;
 
-class Entity extends \Entity {
+class Entity extends \Trix\Model\Entity {
     
     function url($title, $attrs = array())
     {

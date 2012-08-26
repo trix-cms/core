@@ -4,7 +4,7 @@
     </h3>
 </div>
 
-<?php Decorator::table_view(array(
+<?php HTML\Table::display(array(
     'view'=>'_item',
     'items'=>$users,
     'no_items'=>'<p>Нет пользователей</p>',

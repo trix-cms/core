@@ -6,7 +6,7 @@
         <section>
         <h3 class="clearfix">Добавление настройки</h3>
         
-            <?php echo Decorator::form_view(array(
+            <?php echo HTML\Form::display(array(
                 'template'=>'_form',
                 'inputs_template'=>'_inputs',
                 'inputs'=>array(

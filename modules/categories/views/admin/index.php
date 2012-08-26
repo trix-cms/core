@@ -6,7 +6,7 @@
         <section>
             <h3>Выберите модуль</h3>
             <ul class="stats-summary">
-                <?php Decorator::list_view(array(
+                <?php HTML\TList::display(array(
                     'template'=>'admin/categories/_module_item',
                     'items'=>$modules
                 ))?>

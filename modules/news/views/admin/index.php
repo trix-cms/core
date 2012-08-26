@@ -15,7 +15,7 @@
 
 <?php if( $news ):?>
     <form class="table-form">
-        <?php Decorator::table_view(array(
+        <?php HTML\Table::display(array(
             'view'=>'_row',
             'items'=>$news,
             'headings'=>array(

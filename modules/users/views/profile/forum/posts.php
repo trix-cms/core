@@ -1,7 +1,7 @@
 <table class="table">
     <tbody>
         <?php if( $posts ):?>
-            <?php Decorator::list_view(array(
+            <?php HTML\TList::display(array(
                 'template'=>'forum/posts/_user_item',
                 'items'=>$posts
             ))?>

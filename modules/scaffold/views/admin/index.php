@@ -4,7 +4,7 @@
 
 <?php if( $tables ):?>
     <ul style="list-style: none;">
-        <?php Decorator::list_view(array(
+        <?php HTML\TList::display(array(
             'view'=>'_item',
             'items'=>$tables,
         ))?>

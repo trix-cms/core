@@ -1,4 +1,4 @@
-<filesMatch "\.(css|js|jpg|png)$">
+<filesMatch "\.(css|js|jpg|png|gif)$">
     Order Allow,Deny
     Allow from all
 </filesMatch>

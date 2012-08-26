@@ -25,7 +25,7 @@
     	</thead>
     	<tbody>
             <?php if( $items ):?>
-                <?php Decorator::list_view(array(
+                <?php HTML\TList::display(array(
                     'template'=>$view,
                     'items'=>$items
                 )) ?>

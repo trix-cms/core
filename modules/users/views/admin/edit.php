@@ -16,7 +16,7 @@
     </h3>
 </div>
 
-<?php echo Decorator::form_view(array(
+<?php echo HTML\Form::display(array(
         'attr'=>array(
             'class'=>'form-horizontal'
         ),

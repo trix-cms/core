@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Controller extends Controllers\Base {
+class Admin_Controller extends Trix\Controllers\Base {
 
     function __construct()
     {
@@ -43,7 +43,7 @@ class Admin_Controller extends Controllers\Base {
             }
             else
             {
-                $this->set_message(Notification::ERROR, 'Введены неверные данные');
+                $this->set_message(Trix\Alert::ERROR, 'Введены неверные данные');
             }
         }
 

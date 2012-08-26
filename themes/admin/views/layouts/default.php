@@ -39,10 +39,7 @@
     </div>
     
     <footer>
-        <hr /> 
-        <div class="footer-wrap">
-            <?php $this->load->view('::partials/footer')?>
-        </div>
+        <?php $this->load->view('::partials/footer')?>
     </footer>
 </div>
 

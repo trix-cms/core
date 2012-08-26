@@ -5,7 +5,7 @@
     
     <?php if( $users ):?>
         <ul class="thumbnails">
-            <?php Decorator::list_view(array(
+            <?php HTML\TList::display(array(
                 'template'=>'communities/_user',
                 'items'=>$users
             ))?>

@@ -1,6 +1,6 @@
 <?php
 
-class Scaffold_Controller extends Controllers\Backend {
+class Scaffold_Controller extends Trix\Controllers\Backend {
     
     function __construct()
     {
@@ -13,7 +13,7 @@ class Scaffold_Controller extends Controllers\Backend {
         $this->breadcrumbs->add_item('Scaffolding', 'admin/scaffold');
         
         // стили
-        $this->template->append_metadata(Module::css('scaffold.css', 'scaffold'));
+        $this->template->append_metadata(Assets::module_css('scaffold.css', 'scaffold'));
 
         // layout
         $this->template->set_layout('layout');
@@ -93,7 +93,7 @@ class Scaffold_Controller extends Controllers\Backend {
         }
         else
         {
-            $this->alert->set(Notification::SUCCESS, 'Запись удалена');
+            $this->alert->set(Trix\Alert::SUCCESS, 'Запись удалена');
         
             URL::referer();
         }

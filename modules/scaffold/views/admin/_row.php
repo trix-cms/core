@@ -24,7 +24,7 @@
     
     <?php $k=0; foreach($item as $foo):?>
         <td <?php echo Scaffold\Helper::field_style($fields[$k])?>>
-            <?php echo htmlspecialchars(Text::word_limiter($foo, 20, '...'))?>
+            <?php echo htmlspecialchars(Trix\Text::word_limiter($foo, 20, '...'))?>
         </td>
     <?php $k++; endforeach;?>
 </tr>

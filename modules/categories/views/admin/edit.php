@@ -6,7 +6,7 @@
     <div class="page-header">
         <h3>Редактирование категории <?php echo $category->title?></h3>
     </div>
-    <?php Decorator::form_view(array(
+    <?php HTML\Form::display(array(
         'attr'=>array(
             'class'=>'form-horizontal'
         ),

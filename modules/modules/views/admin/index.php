@@ -15,7 +15,7 @@
         <h3>Дополнительные</h3>
     </div>
     
-   <?php Decorator::table_view(array(
+   <?php HTML\Table::display(array(
         'view'=>'_row',
         'items'=>$modules,
         'headings'=>array(
@@ -31,7 +31,7 @@
     <h3>Основные модули</h3>
 </div>
 
-<?php Decorator::table_view(array(
+<?php HTML\Table::display(array(
     'view'=>'_row',
     'items'=>$core_modules,
     'headings'=>array(

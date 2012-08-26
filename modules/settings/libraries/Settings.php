@@ -1,5 +1,9 @@
 <?php
 
+namespace Settings;
+
+use CI;
+
 class Settings {
     
     function __construct()

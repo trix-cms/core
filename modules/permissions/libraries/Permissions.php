@@ -1,5 +1,9 @@
 <?php
 
+namespace Permissions;
+
+use CI;
+
 class Permissions {
 
     private $CI;

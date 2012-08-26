@@ -1,4 +1,4 @@
-<?php Decorator::list_view(array(
+<?php HTML\TList::display(array(
     'view'=>'_item',
     'items'=>$items,
     'no_items'=>'<p>Нет новостей</p>'

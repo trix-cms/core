@@ -23,7 +23,7 @@ class Profile extends Module {
         $this->template->set('user', $this->profile);
         
         // стили
-        $this->template->append_metadata(Module::css('profile.css', 'users'));
+        $this->template->append_metadata(Assets::module_css('profile.css', 'users'));
         
         // хлебные крошки
         if( $this->profile->is_current )

@@ -14,7 +14,7 @@
     <h3>Список</h3>
 </div>
 
-<?php Decorator::table_view(array(
+<?php HTML\Table::display(array(
     'view'=>'_item',
     'items'=>$pages,
     'no_items'=>'<p>Нет страниц</p>',

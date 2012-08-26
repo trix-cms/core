@@ -16,7 +16,7 @@
     </h3>
 </div>
 
-<?php Decorator::table_view(array(
+<?php HTML\Table::display(array(
     'items'=>$groups,
     'view'=>'groups/_item',
     'headings'=>array(

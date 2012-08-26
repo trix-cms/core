@@ -7,7 +7,7 @@
     </thead>
     <tbody>
         <?php if( $topics ):?>
-            <?php Decorator::list_view(array(
+            <?php HTML\TList::display(array(
                 'template'=>'forum/topics/_user_item',
                 'items'=>$topics
             ))?>

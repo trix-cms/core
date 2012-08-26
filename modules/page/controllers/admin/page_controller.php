@@ -1,6 +1,6 @@
 <?php
 
-class Page_Controller extends Controllers\Backend {
+class Page_Controller extends Trix\Controllers\Backend {
     
     function __construct()
     {
@@ -82,7 +82,7 @@ class Page_Controller extends Controllers\Backend {
                     $this->page_m->by_id($id)->update($data);
                     
                     // сообщение юзеру
-                    $this->alert->set(Notification::SUCCESS, 'Изменения сохранены');
+                    $this->alert->set(Trix\Alert::SUCCESS, 'Изменения сохранены');
                     
                     if( $this->input->post('apply') )
                     {
@@ -100,7 +100,7 @@ class Page_Controller extends Controllers\Backend {
                     $this->page_m->insert($data);
                     
                     // сообщение юзеру
-                    $this->alert->set(Notification::SUCCESS, 'Страница успешно добавлена');
+                    $this->alert->set(Trix\Alert::SUCCESS, 'Страница успешно добавлена');
                     
                     // редирект
                     URL::redirect('admin/page');
@@ -108,7 +108,7 @@ class Page_Controller extends Controllers\Backend {
             }
             else
             {
-                $this->alert->set(Notification::ERROR, validation_errors('<b>', '</b><br />'));
+                $this->alert->set(Trix\Alert::ERROR, validation_errors('<b>', '</b><br />'));
             }
         }
         

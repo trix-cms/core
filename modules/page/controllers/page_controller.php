@@ -1,6 +1,6 @@
 <?php
 
-class Page_Controller extends Controllers\Frontend {
+class Page_Controller extends Trix\Controllers\Frontend {
 
     function __construct()
     {
