@@ -48,7 +48,7 @@
         
         <div class="form-actions">
             <button type="submit" name="submit" value="submit" class="btn btn-primary">
-                Сохранить настройки
+                Сохранить
             </button>
         </div>
     </form>

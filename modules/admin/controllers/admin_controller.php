@@ -35,7 +35,7 @@ class Admin_Controller extends Trix\Controllers\Base {
 
             // авторизация
             if( $this->auth->check_user($email, $password) )
-            {              
+            {
                 // Авторизуем юзера
                 $this->auth->login();
                 

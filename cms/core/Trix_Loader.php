@@ -66,7 +66,7 @@ class Trix_Loader extends MX_Loader {
         list($module, $view) = explode('::', $view);
         
         // поиск в теме с модулем
-		$this->_ci_view_paths[] = CI::$APP->config->item('theme_location').CI::$APP->template->theme . '/views/' . $module .'/';
+		$this->_ci_view_paths[] = CI::$APP->config->item('theme_location') . CI::$APP->template->theme . '/views/' . $module .'/';
         
         // поиск в текущем модуле
         $this->_ci_view_paths[] = $modules_locations . $module .'/'. 'views/' . $admin_folder;

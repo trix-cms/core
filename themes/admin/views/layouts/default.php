@@ -15,12 +15,8 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row-fluid content-sidebar">
-            <div class="span2 sidebar">
-                <?php $this->load->view('::partials/sidebar')?>
-            </div>
-            <div class="span10">
-                
+        <div class="row-fluid content">
+            <div class="span12">
                 <?php echo $this->breadcrumbs->display(array(
                     'index_item'=>array('<i class="icon-home"></i>', 'admin/dashboard'),
                     'delimiter'=>' » ',

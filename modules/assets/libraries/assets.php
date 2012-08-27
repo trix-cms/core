@@ -4,7 +4,7 @@ use HTML\Tag;
 
 class Assets {
     
-    static public $img_folder = 'img/';
+    static public $img_folder = 'images/';
     static public $css_folder = 'css/';
     static public $js_folder = 'js/';
 

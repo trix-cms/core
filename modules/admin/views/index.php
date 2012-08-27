@@ -5,7 +5,7 @@
     </div>
     
     <div class="modal-body">
-        <?php alert->display()?>
+        <?php $this->alert->display()?>
         
         <div class="control-group">
             <label class="control-label">Логин</label>

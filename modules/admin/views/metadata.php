@@ -2,10 +2,10 @@
 <title>Bootstrap, from Twitter</title>
 
 <?=Assets::css('bootstrap.min.css')?>
-<?=Theme::css('login.css')?>
+<?=Assets::theme_css('login.css')?>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <?php echo Assets::js('bootstrap.min.js')?>
-<?php echo Theme::js('scripts.js')?>
+<?php echo Assets::theme_js('scripts.js')?>
 
 <style type="text/css">
     body {

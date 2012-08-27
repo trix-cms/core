@@ -4,20 +4,32 @@
         <h2>Модули</h2>
     </div>
     
-    <ul class="nav nav-tabs">
-        <li<?=$this->action == 'index' ? ' class="active"' : ''?>>
-            <?=URL::anchor(
-                'admin/modules',
-                'Установленные'
-            )?>
-        </li>
-        <li<?=$this->action == 'search' ? ' class="active"' : ''?>>
-            <?=URL::anchor(
-                'admin/modules/search',
-                'Поиск'
-            )?>
-        </li>
-    </ul>
+    
+    <div class="page-header">
+        <ul class="header-actions">
+            <li>
+                <?php if( $this->action == 'addons' ):?>
+                    <?=URL::anchor(
+                        'admin/modules',
+                        'Установленные модули',
+                        array(
+                            'class'=>'btn btn-primary'
+                        )
+                    )?>
+                <?php else:?>
+                    <?=URL::anchor(
+                        'admin/modules/addons',
+                        'Найти дополнения',
+                        array(
+                            'class'=>'btn btn-primary'
+                        )
+                    )?>
+                <?php endif?>
+            </li>
+        </ul>
+    
+        <h3><?=$this->action == 'addons' ? 'Доступные дополнения' : 'Установленные'?></h3>
+    </div>
     
     <?=$content?>
 

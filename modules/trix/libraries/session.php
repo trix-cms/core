@@ -215,7 +215,7 @@ class Session {
 		}
 
         $this->set_userdata('ip_address', $_SERVER['REMOTE_ADDR']);
-		$this->set_userdata('user_agent', $_SERVER['HTTP_USER_AGENT']);
+		//$this->set_userdata('user_agent', isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '' );
 
 		// delete old flashdata (from last request)
 		$this->_flashdata_sweep();

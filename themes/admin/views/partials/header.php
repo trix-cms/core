@@ -3,17 +3,15 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
 </a>
-<a class="brand">
-    <?=$this->settings->site_name?>
-</a>
+<?=URL::anchor(
+    'admin',
+    $this->settings->site_name,
+    array(
+        'class'=>'brand'
+    )
+)?>
 <div class="nav-collapse">
     <ul class="nav">
-        <li>
-            <?=URL::anchor(
-                'admin/users/edit/'. $this->user->id,
-                $this->user->login
-            )?>
-        </li>
         <li<?=$this->module == 'modules' ? ' class="active"' : ''?>>
             <?=URL::anchor(
                 'admin/modules',
@@ -30,6 +28,12 @@
     <ul class="nav pull-right">
         <li>
             <?=URL::anchor('', 'Перейти на сайт')?>
+        </li>
+        <li>
+            <?=URL::anchor(
+                'admin/users/edit/'. $this->user->id,
+                $this->user->login
+            )?>
         </li>
         <li>
             <?=URL::anchor('admin/logout', 'Выйти', array('style'=>'color: white'))?>

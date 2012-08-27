@@ -7,19 +7,18 @@ html, body {
 }
 body {
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
-    min-width: 1240px;
+    min-width: 1000px;
     background: url(../images/furley_bg.png);
 }
 body p {
     font-size: 14px;
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
 }
-.content-sidebar {
+.content {
+    margin: 0 auto;
     margin-top: 60px;
     margin-bottom: 60px;
-}
-.sidebar-nav {
-    padding: 9px 0;   
+    max-width: 1280px;
 }
 footer {
     position: absolute;
@@ -29,6 +28,8 @@ footer {
 }
 footer .footer-wrap {
     padding: 0 20px;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 i[class^=icon] {
     color: black;
@@ -36,6 +37,10 @@ i[class^=icon] {
 }
 .breadcrumb .icon-home {    
     font-size: 16px;
+}
+.navbar-inner .container-fluid {
+    max-width: 1280px;
+    margin: 0 auto;
 }
 .nav-list li.active i {
     color: white;
@@ -89,6 +94,7 @@ table .actions .view { background:url('../images/icons/icon_table_view.png') no-
 table .actions .edit { background:url('../images/icons/icon_table_edit.png') no-repeat 0 0; }
 table .actions .delete { background:url('../images/icons/icon_table_delete.png') no-repeat 0 0; }
 table .actions .approve { background:url('../images/icons/icon_table_approve.png') no-repeat 0 0; }
+table .actions .download { background:url('../images/icons/download.png') no-repeat 0 0; }
 
 .form-horizontal input[type=text], 
 .form-horizontal textarea {
