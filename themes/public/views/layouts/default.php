@@ -7,17 +7,20 @@
 <body>
 
     <div class="wrap">
-        <div class="container">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <?php $this->load->view('::partials/header')?>
+                </div>
+            </div>
+        </div>
     
-            <?php $this->alert->display()?>
-        
-            <div class="row" style="margin-left: 0; padding-bottom: 57px; padding-top: 50px;">
+        <div class="container">
+            <div class="row" style="margin-left: 0; padding-bottom: 57px; padding-top: 70px;">
                 <div class="well" style="border: 1px solid #ccc;">
                     <?=$content?>
                 </div>
             </div>
-            
-            
         </div>
         
         <div class="footer">

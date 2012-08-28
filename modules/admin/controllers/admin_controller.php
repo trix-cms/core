@@ -43,23 +43,10 @@ class Admin_Controller extends Trix\Controllers\Base {
             }
             else
             {
-                $this->set_message(Trix\Alert::ERROR, 'Введены неверные данные');
+                $this->alert->set_flash(Trix\Alert::ERROR, 'Введены неверные данные');
             }
         }
 
         $this->render('index');
-    }
-
-    /**
-     * Разавторизация пользователя
-     */
-    function action_logout()
-    {
-        if( $this->user->logged_in )
-        {
-            $this->auth->logout();
-        }
-
-        URL::redirect('');
     }
 }

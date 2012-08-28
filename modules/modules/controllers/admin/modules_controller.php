@@ -136,4 +136,26 @@ class Modules_Controller extends Trix\Controllers\Backend {
             URL::referer();
         }
     }
+    
+    /**
+     * Обновление модуля
+     */
+    function action_update($module)
+    {
+        $update = new Modules\Update($module);
+        $update->run();
+        
+        if( $this->is_ajax() )
+        {
+            echo json_encode(array(
+                'success'=>TRUE
+            ));
+        }
+        else
+        {
+            $this->alert->set_flash(Alert::SUCCESS, 'Модуль успешно обновлен');
+            
+            URL::referer();
+        }
+    }
 }

@@ -36,7 +36,7 @@
             )?>
         </li>
         <li>
-            <?=URL::anchor('admin/logout', 'Выйти', array('style'=>'color: white'))?>
+            <?=URL::anchor('users/logout', 'Выйти', array('style'=>'color: white'))?>
         </li>
     </ul>
 </div>

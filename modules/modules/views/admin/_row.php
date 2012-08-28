@@ -2,7 +2,7 @@
     <td>
         <?php if( $item->is_backend ):?>
             <?=URL::anchor(
-                'admin/'. $item->slug,
+                'admin/'. strtolower($item->slug),
                 $item->name
             )?>
         <?php else:?>

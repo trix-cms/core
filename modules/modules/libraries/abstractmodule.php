@@ -52,7 +52,7 @@ class AbstractModule
     /**
      * Автор
      */
-    public $author;
+    public $author = '';
     
     public function install()
     {
@@ -79,6 +79,15 @@ class AbstractModule
         
         $this->modules_m->by_slug($this->slug)->delete();
         $this->settings_m->by_module($this->slug)->delete();
+    }
+    
+    public function update()
+    {
+        $this->load->model('modules/modules_m');
+        
+        $this->modules_m->by_slug($this->slug)->delete();
+        
+        $this->install();
     }
     
     public function files()

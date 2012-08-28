@@ -102,7 +102,7 @@ class Migrations_Controller extends Trix\Controllers\Backend {
      */
     function action_create()
     {
-        $this->load->library('form_validation');
+        $this->load->library('Trix\Form_validation');
         
         // обрабатываем форму
         if( $this->input->post('submit') )

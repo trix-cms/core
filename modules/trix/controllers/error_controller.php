@@ -6,7 +6,7 @@ class Error_Controller extends Trix\Controllers\Base
      * Вывод 404 страницы
      */
     function action_404()
-    {
+    {        
         header("HTTP/1.0 404 Not Found");
 
         /* когда грузит картинку/флеш, а ее нет, попадает сюда */
@@ -23,5 +23,10 @@ class Error_Controller extends Trix\Controllers\Base
         $this->template->layout[] = $this->config->item('layout');
         
         $this->render('error/404');
+    }
+    
+    function action_general()
+    {
+        $this->render('error/general');
     }
 }

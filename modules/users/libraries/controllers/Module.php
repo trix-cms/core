@@ -2,12 +2,7 @@
 
 namespace Users\Controllers;
 
-class Module extends \Controllers\Frontend {
-    
-    function __construct()
-    {
-        parent::__construct();
-    }
+class Module extends \Trix\Controllers\Frontend {
     
     /**
      * Существует ли почта

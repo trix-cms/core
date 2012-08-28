@@ -9,7 +9,7 @@ class Categories extends Library {
         // модель
         $this->load->model('categories/categories_m');
         
-        $this->load->library('form_validation');
+        $this->load->library('Trix\Form_validation');
         
         if( $this->input->post('submit') )
         {

@@ -22,7 +22,7 @@ class Categories_Controller extends Trix\Controllers\Backend {
         
         if( $this->input->post('submit') )
         {
-            $this->load->library('form_validation');
+            $this->load->library('Trix\Form_validation');
             
             $this->form_validation->set_rules('title', 'Название', 'trim|required');
             

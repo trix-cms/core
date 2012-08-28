@@ -1,6 +1,6 @@
 <?php
 
-class Users_Controller extends Trix\Controllers\Backend {
+class Users_Controller extends Users\Controllers\Admin\Base {
 
     function __construct()
     {
@@ -11,12 +11,6 @@ class Users_Controller extends Trix\Controllers\Backend {
             'users/users_m', 
             'users/groups_m'
         ));
-        
-        // хлебные крошки
-        $this->breadcrumbs->add_item('Пользователи', 'admin/users');
-        
-        // вложенный шаблон
-        $this->template->set_layout('layout');
     }
 
     /**
@@ -35,7 +29,7 @@ class Users_Controller extends Trix\Controllers\Backend {
                                 ->get_all();
 
         // пагинация
-        $pagination = new Pagination;
+        $pagination = new Trix\Pagination;
         $pagination->set_page($page);
         $pagination->set_total($total);
         $pagination->set_url('admin/users/index/'. $type);
@@ -105,6 +99,28 @@ class Users_Controller extends Trix\Controllers\Backend {
             'item'=>$item,
             'groups_options'=>$groups_options
         ));
+    }
+    
+    /**
+     * Удаление
+     */
+    function action_delete($id)
+    {
+        // удаляем пользователя
+        $this->users_m->by_id($id)->delete();
+        
+        if( $this->is_ajax() )
+        {
+            echo json_encode(array(
+                'success'=>TRUE
+            ));
+        }
+        else
+        {
+            $this->notification->set_flash(Notification::SUCCESS, 'Пользователь удален');
+            
+            URL::referer();
+        }
     }
 
     function action_actions()

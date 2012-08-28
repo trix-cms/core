@@ -16,7 +16,7 @@ class Base extends \Trix_Controller
             'user_agent', 
             'Trix/Session', 
             'Users/Auth',
-            'Permissions/Permissions',
+            'Users/Permissions',
             'Trix/Template',
             'Trix/Alert',
             'Trix/Breadcrumbs'

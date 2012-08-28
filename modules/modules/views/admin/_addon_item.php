@@ -18,7 +18,15 @@
                 class="download"
             >установить</a>     
         <?php else:?>
-            <span class="label label-success">установлен</span>
+            <?php if( $item->version != $installed_modules[$item->slug . $item->author]->version ):?>
+                <a 
+                    href="#"
+                    class="update"
+                    style="text-decoration: none;"
+                ><span class="label label-warning">обновить</span></a>
+            <?php else:?>
+                <span class="label label-success">установлен</span>
+            <?php endif?>
         <?php endif?>  
     </td>
 </tr>

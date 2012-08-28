@@ -1,13 +1,12 @@
 <?php
 
+use Users\Config;
+
 class Users_Controller extends Users\Controllers\Module {
     
     function __construct()
     {
         parent::__construct();
-        
-        // вложенный шаблон
-        $this->template->set_layout('layouts/auth');
     }
     
     /**
@@ -21,13 +20,15 @@ class Users_Controller extends Users\Controllers\Module {
         }
         
         // класс валидации форм
-        $this->load->library('form_validation');
+        $this->load->library('Trix\Form_validation');
+        
+        $this->alert->set(\Trix\Alert::ATTENTION, 'Для восстановления пароля введите свой регистрационный e-mail. На него придет письмо с дальнейшими действиями.');
 
         // обрабатываем форму
         if($this->input->post('submit'))
         {
             // правила валидации
-            $this->form_validation->set_rules('email', 'E-mail', 'trim|valid_email|callback_email_exists');
+            $this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|callback_email_exists');
 
             // валидация формы
             if( $this->form_validation->run() )
@@ -41,39 +42,36 @@ class Users_Controller extends Users\Controllers\Module {
                 // отправляем письмо
                 $this->send_reset_start_email(array(
                     'reset_link'=>URL::site_url(
-                        'users/reset_password/'. urlencode($email) .'/'. $this->auth->data['token']
+                        'users/reset_password/'. $this->auth->data['user_id'] .'/'. $this->auth->data['token']
                     ),
                     'login'=>$this->auth->data['login'],
                     'email'=>$this->auth->data['email']
                 ));
-
-                // флаг, что письмо отправлено
-                $this->session->set_userdata('reset_start', TRUE);
                     
                 // обновляем страницу
-                URL::refresh();
+                URL::redirect('users/reset_send');
             }
             else
             {
                 $this->alert->set(Trix\Alert::ERROR, validation_errors());
             }
         }
-
-        if( $this->session->userdata('reset_start') )
-        {
-            $this->render('reset_start');
-            $this->session->unset_userdata('reset_start');
-        }
-        else
-        {
-            $this->render('reset');
-        }
+        
+        $this->render('reset');
+    }
+    
+    /**
+     * Страница, оповещающая, что отправлено письмо для восстановления пароля
+     */
+    function action_reset_send()
+    {
+        $this->render('reset_send');
     }
     
     /**
      * Форма смены пароля
      */
-    function action_reset_password($email = '', $token = '')
+    function action_reset_password($user_id = '', $token = '')
     {    
         // если юзер авторизован
         if( $this->user->logged_in )
@@ -81,29 +79,29 @@ class Users_Controller extends Users\Controllers\Module {
             show_404();
         }
         
-        $email = urldecode($email);
-        
         // если нет пользователя с такой почтой
-        if( !$user = $this->users_m->by_email($email)->get_one() )
+        if( !$user = $this->users_m->by_id($user_id)->get_one() )
         {
             show_404();
         }
         
         // если не совпадает токен
-        if( !$this->auth->check_reset_token($email, $token)  )
+        if( !$this->auth->check_reset_token($user, $token)  )
         {
             show_404();
         }
+        
+        $this->alert->set(Trix\Alert::INFO, 'Введите новый пароль');
     
         // обрабатываем форму
         if( $this->input->post('submit') )
         {
             // класс валидации
-            $this->load->library('form_validation');
+            $this->load->library('Trix\Form_validation');
 
             // правила валидации
             $this->form_validation->set_rules(
-                'password', 'Пароль', 'trim|required|min_length[6]|max_length[20]|matches[password_2]'
+                'password', 'Пароль', 'trim|required|matches[password_2]'
             );
             $this->form_validation->set_rules('password_2', 'Пароль(повтор)', 'trim|required');
 
@@ -119,8 +117,10 @@ class Users_Controller extends Users\Controllers\Module {
                     'reset_token'=>''
                 ));
                 
+                $this->alert->set_flash(Trix\Alert::SUCCESS, 'Пароль успешно изменен');
+                
                 // редирект
-                URL::redirect('users/reset_password_success');
+                URL::redirect('users/login');
             }
             else
             {
@@ -129,66 +129,6 @@ class Users_Controller extends Users\Controllers\Module {
         }
         
         $this->render('reset_password');    
-    }
-    
-    /**
-     * Установка имени пользователя
-     */
-    function action_set_name()
-    {
-        // если гость
-        if( $this->user->is_guest )
-        {
-            show_404();
-        }
-        
-        // если уже указаны необходимые данные
-        if( $this->user->login )
-        {
-            show_404();
-        }
-        
-        // класс валидации
-        $this->load->library('form_validation');
-        
-        // обработка формы
-        if( $this->input->post('submit') )
-        {
-            // правила валидации
-            $this->form_validation->set_rules('login', 'Имя', 'trim|required|callback_check_login');
-            
-            // валидация формы
-            if( $this->form_validation->run($this) )
-            {
-                // обновляем данные
-                $this->users_m->where('id', $this->user->id)->update(array(
-                    'login'=>$this->input->post('login', TRUE)
-                ));
-                
-                // очищаем сессию
-                $this->session->unset_userdata('user');
-                
-                // уведомительное сообщение
-                $this->alert->set(Trix\Alert::SUCCESS, 'Спасибо за регистрацию на нашем сайте.');
-                
-                // редиректим на главную
-                URL::redirect();
-            }
-            else
-            {
-                $this->alert->set(Trix\Alert::ERROR, validation_errors());
-            }
-        }
-        
-        $this->render('set_name');
-    }
-    
-    /**
-     * Успешная смена пароля
-     */
-    function action_reset_password_success()
-    {
-        $this->render('reset_password_success');
     }
 
     /**
@@ -215,28 +155,35 @@ class Users_Controller extends Users\Controllers\Module {
         }
 
         // загружаем класс валидации
-        $this->load->library('form_validation');
+        $this->load->library('Trix\Form_validation');
 
         // обрабатываем форму
         if( $this->input->post('submit') )
         {            
             // правида валидации
-            $this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email');
+            $this->form_validation->set_rules('credentials', 'Почта или логин', 'trim|required');
             $this->form_validation->set_rules('password', 'Пароль', 'trim|required');
 
             // валидация
             if( $this->form_validation->run() )
             {
-                $email = $this->input->post('email');
+                $credentials = $this->input->post('credentials');
                 $password = $this->input->post('password');
 
-                if( $this->auth->check_user($email, $password) )
+                if( $this->auth->check_user($credentials, $password) )
                 {                    
-                    // Авторизуем юзера
-                    $this->auth->login();
-                    
-                    // редиректим обратно на страницу
-                    URL::referer();
+                    if( $this->auth->user->is_active )
+                    {
+                        // Авторизуем юзера
+                        $this->auth->login();
+                        
+                        // редиректим обратно на страницу
+                        URL::referer();
+                    }
+                    else
+                    {
+                        $this->alert->set(Trix\Alert::ATTENTION, 'Вы не подтвердили свой email');
+                    }
                 }
                 else
                 {
@@ -255,7 +202,7 @@ class Users_Controller extends Users\Controllers\Module {
     /**
      * Регистрация пользователя
      */
-    function action_register($referer = false)
+    function action_register()
     {
         // если юзер уже авторизован
         if( $this->user->logged_in )
@@ -266,72 +213,37 @@ class Users_Controller extends Users\Controllers\Module {
         // если отключена регистрация
         if( !$this->settings->users->registration )
         {
-            $this->set_message(Trix\Alert::ATTENTION, 'Регистрация закрыта');
+            $this->alert->set(Trix\Alert::ATTENTION, 'Регистрация закрыта');
             
-            URL::redirect();
+            echo Modules::run('trix/error/action_general');
+            return;
         }
-        
-        // ID реферера
-        if( $this->input->post('referer') )
-        {
-            $referer = (int)$this->input->post('referer');
-        }
-        else
-        {
-            $referer = $this->session->userdata('referer') 
-                ? (int)$this->session->userdata('referer') 
-                : (int)$referer;
-        }
-        
-        $this->session->set_userdata('referer', $referer);
         
         // загружаем библиотеку валидации формы
-        $this->load->library('form_validation');
+        $this->load->library('Trix\Form_validation');
         
         // обрабатываем форму
         if( $this->input->post('submit') )
         {
             // правила валидации
-            $this->form_validation->set_rules(
-                'email',
-                'Email',
-                'trim|required|valid_email|callback_check_email'
-            );
+            $this->form_validation->set_rules(Config::$register_rules);
             
             // валидация формы
             if($this->form_validation->run($this))
             {
                 // данные
                 $data = array(
-                    'email'=>$this->input->post('email')
+                    'login'=>$this->input->post('login', TRUE),
+                    'email'=>$this->input->post('email'),
+                    'password'=>$this->input->post('password'),
                 );
                 
                 // регистрируем юзера
                 $this->auth->register($data);
                 
-                // данные букса по юзеру
-                $this->load->model('bux/users_data_m');
-                $this->users_data_m->insert(array(
-                    'user_id'=>$this->auth->data['id']
-                ));
-                
-                // добавляем реферала если есть
-                if( $referer )
-                {
-                    $this->load->model('bux/referals_m');
-                    
-                    // добавляем запись
-                    $this->referals_m->insert($referer, $this->auth->data['id']);
-                    
-                    // увеличиваем отметку о количестве рефералов
-                    $this->users_data_m
-                                    ->by_user_id($referer)
-                                    ->set('referals_count', 'referals_count + 1', FALSE)
-                                    ->update();
-                }
-                
                 // отправляем уведомление пользователю на почту
                 $this->send_registration_email(array(
+                    'link'=>URL::site_url('users/activate/'. $this->auth->data['id'] .'/' .$this->auth->data['activation_code']),
                     'email'=>$this->auth->data['email'],
                     'password'=>$this->auth->data['password'],
                     'site_url'=>URL::base_url()
@@ -346,9 +258,24 @@ class Users_Controller extends Users\Controllers\Module {
             }
         }
 
-        $this->render('register', array(
-            'referer'=>$referer
-        ));
+        $this->render('register');
+    }
+    
+    /**
+     * Активация аккаунта
+     */
+    function action_activate($user_id, $code)
+    {
+        if( !$this->auth->activate($user_id, $code) )
+        {
+            show_404();
+        }
+
+        $this->alert->set_flash(Trix\Alert::SUCCESS, 'Ваш аккаунт успешно активирован. Теперь вы можете войти.');
+
+        $this->seo->add_title('Активация аккаунта');
+
+        URL::redirect('users/login');
     }
     
     /**
@@ -366,17 +293,17 @@ class Users_Controller extends Users\Controllers\Module {
     function send_registration_email($data)
     {
         // загружаем класс
-        $this->load->library('email');
+        $this->load->library('Trix\Email');
         
         // шаблон
-        $this->email->template('registration_successful');
+        $this->email->template('Спасибо за регистрацию. {link}');
         
         // данные 
         $this->email->data($data);
         
         $this->email->from($this->settings->server_email, $this->settings->site_name);
         $this->email->to($data['email']);
-        $this->email->subject('Регистрация на сайте');
+        $this->email->subject('Регистрация на сайте.');
         $this->email->send();
     }
     
@@ -386,10 +313,10 @@ class Users_Controller extends Users\Controllers\Module {
     function send_reset_start_email($data)
     {        
         // загружаем класс
-        $this->load->library('email');
+        $this->load->library('Trix\Email');
         
         // шаблон
-        $this->email->template('reset_start');
+        $this->email->template('Восстановление пароля. {reset_link}');
         
         // данные 
         $this->email->data($data);

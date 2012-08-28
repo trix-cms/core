@@ -44,7 +44,7 @@ class News_Controller extends Trix\Controllers\Backend {
                             ->get_all();
 
         // пагинация
-        $pagination = new Pagination;
+        $pagination = new Trix\Pagination;
         $pagination->set_page($page);
         $pagination->set_total($total);
         $pagination->set_url('admin/news/index');
@@ -70,7 +70,7 @@ class News_Controller extends Trix\Controllers\Backend {
     function action_add($id = false)
     {        
         // обработка формы
-        $this->load->library('form_validation');
+        $this->load->library('Trix\Form_validation');
         
         $news = $this->news_m->by_id($id)->get_one();
 

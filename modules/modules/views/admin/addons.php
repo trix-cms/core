@@ -1,5 +1,5 @@
 <div class="search-modules">
-    <?php if( $items ):?>
+    <?php if( is_array($items) ):?>
         <?php HTML\Table::display(array(
             'headings'=>array(
                 'Название',
@@ -11,7 +11,7 @@
             'view'=>'_addon_item'
         ))?>
     <?php else:?>
-        <p>Дополнения не найдены</p>
+        <p>Нет дополнений</p>
     <?php endif?>
 </div>
 
@@ -37,6 +37,18 @@
         
         $.get(BASE_URL + 'admin/modules/install/' + module, function(data){
             label.removeClass('label-info').addClass('label-success').html('установлен');
+        });        
+        return false;
+    });
+    
+    $(".update").live('click', function(){
+        var module = $(this).parents("tr").attr("id");
+        
+        var label = $(this).wrap('<span class="label label-info" />').parent();
+        label.html('обновляется');
+        
+        $.get(BASE_URL + 'admin/modules/update/' + module, function(data){
+            label.removeClass('label-info').addClass('label-success').html('обновлен');
         });        
         return false;
     });

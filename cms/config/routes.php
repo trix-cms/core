@@ -39,7 +39,7 @@
 */
 
 $route['default_controller'] = "dashboard";
-$route['404_override'] = 'trix/error/404';
+$route['404_override'] = 'trix/error/action_404';
 
 $route['users/profile'] = "users/profile/default";
 $route['users/profile/(:num)'] = 'users/profile/default/index/$1';

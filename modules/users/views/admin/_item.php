@@ -3,11 +3,15 @@
         <?=$item->id?>
     </td>
     <td>
-        <?php echo URL::anchor(
-            'admin/users/profile/view/'. $item->id, 
-            $item->login ? $item->login : '<strong><i>Имя не указано</i></strong>', 
-            'class="contacts-user" title="#'. $item->id .'"'
-        )?>
+        <?php if( $item->id != 0 ):?>
+            <?php echo URL::anchor(
+                'admin/users/profile/view/'. $item->id, 
+                $item->login ? $item->login : '<strong><i>Имя не указано</i></strong>', 
+                'class="contacts-user" title="#'. $item->id .'"'
+            )?>
+        <?php else:?>
+            <?=$item->login?>
+        <?php endif?>        
     </td>
     <td>
         <?=Users\Groups::label($item->group_slug)?>
@@ -16,7 +20,7 @@
         <?=$item->email?>
     </td>
     <td>
-        <?php echo Date::nice($item->register_date)?>
+        <?php echo \Trix\Date::nice($item->register_date)?>
     </td>
     <td style="text-align: center; width: 10px;">
         <?php if( $item->id != 0 ):?>

@@ -31,7 +31,7 @@ class Page_Controller extends Trix\Controllers\Backend {
         $pages = $this->page_m->limit($limit)->offset($offset)->get_all();
         
         // пагинация
-        $pagination = new Pagination;
+        $pagination = new Trix\Pagination;
         $pagination->set_total($total);
         $pagination->set_page($page);
         $pagination->set_url('admin/page/index');
@@ -49,7 +49,7 @@ class Page_Controller extends Trix\Controllers\Backend {
     function action_add($id = false)
     {
         // загружаем библиотеку
-        $this->load->library('form_validation');
+        $this->load->library('Trix\Form_validation');
         
         // странца при редактировании
         $page = $this->page_m->by_id($id)->get_one();

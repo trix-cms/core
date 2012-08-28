@@ -12,7 +12,7 @@ class Groups {
         
         $groups = CI::$APP->groups_m->get_all();
         
-        $groups = \Trix\CArray::map($groups, 'slug', 'name');
+        $groups = \Utility\CArray::map($groups, 'slug', 'name');
         
         return $groups[$group];
     }

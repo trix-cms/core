@@ -1,6 +1,6 @@
 <?php
 
-class Groups_Controller extends Trix\Controllers\Backend {
+class Groups_Controller extends Users\Controllers\Admin\Base {
     
     function __construct()
     {
@@ -8,9 +8,6 @@ class Groups_Controller extends Trix\Controllers\Backend {
         
         // модель
         $this->load->model('groups_m');
-        
-        // вложенный шаблон
-        $this->template->set_layout('groups/layout');
         
         // хлебные крошки
         $this->breadcrumbs->add_item('Группы', 'users/admin/groups');
@@ -34,6 +31,8 @@ class Groups_Controller extends Trix\Controllers\Backend {
      */
     function action_delete($slug)
     {
+        $slug = urldecode($slug);
+        
         $group = $this->groups_m->by_slug($slug)->get_one();
         
         // удаляем если не дефолтная
@@ -57,7 +56,7 @@ class Groups_Controller extends Trix\Controllers\Backend {
         else
         {
             // уведомление
-            $this->set_message(Trix\Alert::SUCCESS, 'Группа удалена');
+            $this->alert->set_flash(Trix\Alert::SUCCESS, 'Группа удалена');
             
             // редирект
             URL::redirect('users/admin/groups');
@@ -78,7 +77,7 @@ class Groups_Controller extends Trix\Controllers\Backend {
     function action_add($slug = false)
     {
         // класс валидации
-        $this->load->library('form_validation');
+        $this->load->library('Trix\Form_validation');
         
         // группа
         $group = $this->groups_m->by_slug($slug)->get_one();
@@ -110,7 +109,7 @@ class Groups_Controller extends Trix\Controllers\Backend {
                     ));
                     
                     // уведомление
-                    $this->set_message(Trix\Alert::SUCCESS, 'Изменения сохранены');
+                    $this->alert->set_flash(Trix\Alert::SUCCESS, 'Изменения сохранены');
                 }
                 else
                 {
@@ -127,7 +126,7 @@ class Groups_Controller extends Trix\Controllers\Backend {
                     ));
                     
                     // уведомление
-                    $this->set_message(Trix\Alert::SUCCESS, 'Группа добавлена');
+                    $this->alert->set_flash(Trix\Alert::SUCCESS, 'Группа добавлена');
                 }
                 
                 // редирект
@@ -135,7 +134,7 @@ class Groups_Controller extends Trix\Controllers\Backend {
             }
             else
             {
-                $this->set_message(Trix\Alert::ERROR, validation_errors());
+                $this->alert->set_flash(Trix\Alert::ERROR, validation_errors());
             }
         }
         

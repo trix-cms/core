@@ -22,7 +22,7 @@ class Default_Controller extends Users\Controllers\Profile {
     {
         if( $this->input->post('submit') )
         {
-            $this->load->library('form_validation');
+            $this->load->library('Trix\Form_validation');
 
             $this->form_validation->set_rules('old_password', 'Старый пароль', 'trim|required');
             $this->form_validation->set_rules('password', 'Новый пароль', 'trim|required|min_width[6]|matches[password2]');
@@ -69,7 +69,7 @@ class Default_Controller extends Users\Controllers\Profile {
 
         if( $this->input->post('submit') )
         {
-            $this->load->library('form_validation');
+            $this->load->library('Trix\Form_validation');
 
             // правила валидации
             //$this->form_validation->set_rules('email', 'Ваш E-Mail', 'trim|required|valid_email|callback__check_email');

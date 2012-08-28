@@ -30,13 +30,10 @@ class Auth
     /**
      * Проверяет существует ли юзер
      */
-    function check_user($email, $password, $admin = FALSE)
+    function check_user($credentials, $password)
     {
-        // если лезут через админку
-        !$admin OR $this->users_m->where('group_slug', 'admins');
-
         // берем из базы юзера
-        $user = $this->users_m->by_email($email)->or_where('login', $email)->get_one();
+        $user = $this->users_m->by_email($credentials)->or_where('login', $credentials)->get_one();
 
         // проверяем есть ли юзер и совпадает ли пароль
         if( !$user OR $user->password != $this->dohash($password) )
@@ -67,26 +64,43 @@ class Auth
      * Регистрация пользователя
      */
     function register($data = array())
-    {
-        // генерим пароль
-        $password = substr(String::random('unique'), 0, 10);
+    {        
+        $this->data = array_merge(
+            $data, 
+            array(
+                'activation_code'=>\Utility\String::random('unique'),
+                'email'=>$data['email'],
+                'avatar'=>'',
+                'password'=>$this->dohash($data['password']),
+                'user_agent'=>$this->session->userdata('user_agent'),
+                'group_slug'=>'users',
+                'register_date'=>time()
+            )
+        );
         
         // создаем пользователя
-        $user_id = $this->users_m->insert(array(
-            'email'=>$data['email'],
-            'avatar'=>'',
-            'password'=>$this->dohash($password),
-            'user_agent'=>$this->session->userdata('user_agent'),
-            'group_slug'=>'users',
-            'register_date'=>time()
-        ));
+        $user_id = $this->users_m->insert($this->data);
         
-        // данные
-        $this->data = array(
-            'email'=>$data['email'],
-            'password'=>$password,
-            'id'=>$user_id
-        );
+        $this->data['id'] = $user_id;
+    }
+    
+    /**
+     * Активация аккаунта юзера
+     */
+    function activate($user_id, $code)
+    {
+        if( $this->users_m->by_id($user_id)->by_activation_code($code)->count() == 1 )
+        {
+            $this->users_m
+                        ->by_id($user_id)
+                        ->set('activation_code', '')
+                        ->set('is_active', 1)
+                        ->update();
+            
+            return TRUE;    
+        }
+        
+        return FALSE;
     }
     
     /**
@@ -110,7 +124,8 @@ class Auth
         $this->data = array(
             'token'=>$token,
             'email'=>$email,
-            'login'=>$user->login
+            'login'=>$user->login,
+            'user_id'=>$user->id
         );  
     }
     
@@ -119,7 +134,7 @@ class Auth
      */
     private function _generate_token()
     {
-        return sha1(String::random('unique'));
+        return sha1(\Utility\String::random('unique'));
     }
     
     /**
@@ -149,9 +164,9 @@ class Auth
     /**
      * Проверяет, что пользователь может изменить свой пароль
      */
-    function check_reset_token($email, $token)
+    function check_reset_token($user, $token)
     {
-        return $this->users_m->by_email($email)->where('reset_token', $token)->count() == 1;
+        return $this->users_m->by_id($user->id)->where('reset_token', $token)->count() == 1;
     }
     
     function __get($key)

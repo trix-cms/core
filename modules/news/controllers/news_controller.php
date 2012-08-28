@@ -49,7 +49,7 @@ class News_Controller extends Trix\Controllers\Frontend {
                             ->get_all();
                             
         // пагинация
-        $pager = new Pagination;
+        $pager = new Trix\Pagination;
         $pager->set_total($total);
         $pager->set_page($page);
         $pager->set_url('news/index');
@@ -105,7 +105,7 @@ class News_Controller extends Trix\Controllers\Frontend {
         $total = $this->news_m->by_cat_id($category_id)->count();
 
         // пагинация
-        $pagination = new Pagination;
+        $pagination = new Trix\Pagination;
         $pagination->setUrl('news/category/'. $category->id);
         $pagination->setCurrentPage($page);
         $pagination->setTotal($total);

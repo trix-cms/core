@@ -9,7 +9,7 @@
 <?=Assets::css('FortAwesome/css/font-awesome.css')?>
 <?=Assets::theme_css('style.css')?>
 
-<?=Assets::js('jquery.min.js')?>
+<?=jQuery::render('cdn')?>
 <?=Assets::js('bootstrap.min.js')?>
 <?=Assets::theme_js('scripts.js')?>
 
