@@ -48,7 +48,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'core';
+$db['default']['hostname'] = 'trix-core';
 $db['default']['username'] = 'mysql';
 $db['default']['password'] = 'mysql';
 $db['default']['database'] = 'trix-core';
