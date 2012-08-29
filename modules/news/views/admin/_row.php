@@ -8,19 +8,8 @@
     <td style="width: 150px;">
         <?php echo $item->date?>
     </td>
-    <td style="width: 100px; text-align: center;">
+    <td style="width: 50px; text-align: center;">
     	<ul class="actions">
-    		<li>
-                <?php echo $item->url(
-                    'view',
-                    array(
-                        'class'=>'view',
-                        'target'=>'_blank',
-                        'rel'=>'tooltip',
-                        'data-title'=>'Просмотр новости'
-                    )
-                )?>
-            </li>
     		<li>
                 <?php echo URL::anchor(
                     'admin/news/edit/'. $item->id, 

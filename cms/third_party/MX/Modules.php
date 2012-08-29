@@ -144,8 +144,8 @@ class Modules
             
             unset($items[0]);
         }else{
-            $module = $class;
-            $items[] = $class;
+            $module = strtolower($class);
+            $items[] = strtolower($class);
         }
         
         $class_path = $module . DIRECTORY_SEPARATOR . 'libraries'. DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $items) . EXT;

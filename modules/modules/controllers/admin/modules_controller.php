@@ -62,7 +62,8 @@ class Modules_Controller extends Trix\Controllers\Backend {
         $curl = new Utility\Curl;
         
         // доступные модули
-        $content = unserialize($curl->simple_get(Modules\Config::ADDONS_URL));
+        $content = $curl->simple_get(Modules\Addons\Base::ADDONS_URL);
+        $content = $content ? unserialize($curl->simple_get(Modules\Addons\Base::ADDONS_URL)) : FALSE;
         
         // массиы установленных модулей
         $installed_modules = array();
@@ -96,64 +97,48 @@ class Modules_Controller extends Trix\Controllers\Backend {
     /**
      * Установка модуля
      */
-    function action_install($module)
+    function action_install($id)
     {
-        $installator = new Modules\Install($module);
+        $installator = new Modules\Addons\Install($id);
         $installator->run();
-            
-        if( $this->is_ajax() )
-        {
-            echo json_encode(array(
-                'success'=>TRUE
-            ));
-        }
-        else
-        {
-            $this->alert->set_flash(Alert::SUCCESS, 'Модуль успешно установлен');
-            
-            URL::referer();
-        }
+        
+        $this->success_return('Модуль успешно установлен');
     }
     
     /**
      * Удаление модуля
      */
-    function action_uninstall($module)
+    function action_uninstall($id)
     {
-        $uninstall = new Modules\Uninstall($module);
+        $uninstall = new Modules\Addons\Uninstall($id);
         $uninstall->run();
         
-        if( $this->is_ajax() )
-        {
-            echo json_encode(array(
-                'success'=>TRUE
-            ));
-        }
-        else
-        {
-            $this->alert->set_flash(Alert::SUCCESS, 'Модуль успешно удален');
-            
-            URL::referer();
-        }
+        $this->success_return('Модуль успешно удален');
     }
     
     /**
      * Обновление модуля
      */
-    function action_update($module)
+    function action_update($id)
     {
-        $update = new Modules\Update($module);
+        $update = new Modules\Addons\Update($id);
         $update->run();
         
+        $this->success_return('Модуль успешно обновлен');
+    }
+    
+    private function success_return($str)
+    {
         if( $this->is_ajax() )
         {
             echo json_encode(array(
-                'success'=>TRUE
+                'success'=>TRUE,
+                'message'=>$str
             ));
         }
         else
         {
-            $this->alert->set_flash(Alert::SUCCESS, 'Модуль успешно обновлен');
+            $this->alert->set_flash(Alert::SUCCESS, $str);
             
             URL::referer();
         }

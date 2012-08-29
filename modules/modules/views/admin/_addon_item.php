@@ -1,4 +1,4 @@
-<tr id="<?=str_replace('\\', '-', $item->slug)?>">
+<tr id="<?=$item->id?>">
     <td>
         <?=URL::anchor(
             'addons/view/'. $item->slug,
@@ -11,13 +11,13 @@
     <td style="text-align: center; width: 50px;">
         <?=$item->version?>
     </td>
-    <td style="width: 120px; text-align: center;">    
+    <td style="width: 120px; text-align: center;">     
         <?php if( !isset($installed_modules[$item->slug . $item->author]) ):?>
-            <a 
+            <a
                 href="#"
                 class="download"
             >установить</a>     
-        <?php else:?>
+        <?php else:?>        
             <?php if( $item->version != $installed_modules[$item->slug . $item->author]->version ):?>
                 <a 
                     href="#"

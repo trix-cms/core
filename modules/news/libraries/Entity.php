@@ -11,15 +11,15 @@ class Entity extends \Trix\Model\Entity {
     
     function get_image()
     {
-        $local_image = HTML::image(URL::site_url(News\Config::$upload_folder. $this->picture), array('width'=>125));
-        $dummy_image = HTML::image('http://lorempixel.com/120/100');
+        $local_image = HTML\Tag::image(URL::site_url(Config::$upload_folder. $this->picture), array('width'=>125));
+        $dummy_image = HTML\Tag::image('http://lorempixel.com/120/100');
         
         return $this->picture ? $local_image : $dummy_image;
     }
     
     function get_image_url()
     {
-        $local_image_url = URL::site_url(News\Config::$upload_folder. $this->picture);
+        $local_image_url = URL::site_url(Config::$upload_folder. $this->picture);
         $dummy_image_url = 'http://lorempixel.com/120/100';
         
         return $this->picture ? $local_image_url : $dummy_image_url;
@@ -27,12 +27,12 @@ class Entity extends \Trix\Model\Entity {
     
     function get_short_intro()
     {
-        return Text::word_limiter(strip_tags($this->intro), 20, '...');
+        return \Utility\Text::word_limiter(strip_tags($this->intro), 20, '...');
     }
     
     function get_date()
     {
-        return \Date::nice($this->created_on);
+        return \Trix\Date::nice($this->created_on);
     }
     
     function get_update_date()

@@ -193,3 +193,30 @@ hr {
     background: url(../../../assets/images/avbg.png); 
     padding: 2px 9px 9px 2px;
 }
+table .actions {
+	margin:0 5px 0;
+	padding:0;
+}
+table .actions > li {
+	background:none;
+	list-style:none;
+	display:inline-block;
+	margin-right:5px;
+	padding:0;
+}
+.ie7 table .actions > li {
+	display:block;
+	float:left;
+}
+table .actions > li > a {
+	display:block;
+	height:16px;
+	width:16px;
+	text-indent:-9999em;
+}
+table .actions > li:last-child { margin-right:0; }
+table .actions .view { background:url('../images/icons/icon_table_view.png') no-repeat 0 0; }
+table .actions .edit { background:url('../images/icons/icon_table_edit.png') no-repeat 0 0; }
+table .actions .delete { background:url('../images/icons/icon_table_delete.png') no-repeat 0 0; }
+table .actions .approve { background:url('../images/icons/icon_table_approve.png') no-repeat 0 0; }
+table .actions .download { background:url('../images/icons/download.png') no-repeat 0 0; }

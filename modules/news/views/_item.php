@@ -1,7 +1,7 @@
 <div class="news-item">
     <div class="page-header">
         <div style="float: right;">
-            <?=Date::nice($item->created_on)?>
+            <?=\Trix\Date::nice($item->created_on)?>
         </div>
         <h3>
             <?php echo $item->title?>

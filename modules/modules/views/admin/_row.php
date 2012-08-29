@@ -36,7 +36,7 @@
             <?php if( !$item->is_core ):?>
         		<li>
                     <?php echo URL::anchor(
-                        'admin/modules/uninstall/'. str_replace('\\', '-', $item->slug),
+                        'admin/modules/uninstall/'. $item->id,
                         'edit', 
                         array(
                             'class'=>'delete ajax-delete confirm',

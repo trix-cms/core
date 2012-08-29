@@ -29,6 +29,9 @@
     
     // нужно, чтобы в дробных числах ставились точка, а не запятая
     setlocale(LC_NUMERIC,array ('en_US.UTF-8', 'en_US.UTF-8'));
+    
+    // timezone
+    date_default_timezone_set("Europe/Moscow");
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

@@ -124,10 +124,10 @@ class News_Controller extends Trix\Controllers\Frontend {
     {
         header("Content-Type: application/xml; charset=UTF-8");
 
-        $data['title']          = 'KaviCom - новости';
-        $data['link']           = 'http://kavicom.ru/';
-        $data['description']    = 'Новости Старого Оскола - Кавиком.';
-        $data['module']         = 'news';
+        $data['title']          = $this->settings->site_name .' - новости';
+        $data['link']           = URL::site_url();
+        $data['description']    = 'Новости';
+        $data['module']         = $this->module;
 
         $data['items'] = $this->news_m
                                     ->moderated()
@@ -136,6 +136,6 @@ class News_Controller extends Trix\Controllers\Frontend {
                                     ->limit(100)
                                     ->getAll();
 
-        $this->template->load('rss', $data);
+        $this->load->view('rss', $data);
     }
 }

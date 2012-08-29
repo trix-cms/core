@@ -1,28 +1,26 @@
 <?php
 
-namespace Modules;
-
-class AbstractModule
+class Dummy extends Modules\AbstractModule
 {
     /**
      * Имя модуля
      */
-    public $name;
+    public $name = 'Dummy';
     
     /**
      * Имя модуля
      */
-    public $description;
+    public $description = 'Тестовый модуль';
     
     /**
      * Имя на англ.
      */
-    public $slug;    
+    public $slug = 'Test\Dummy';    
     
     /**
      * Версия
      */
-    public $version;
+    public $version= '0.1';
     
     /**
      * Является ли модуль утилитой
@@ -32,7 +30,7 @@ class AbstractModule
     /**
      * Является ли вспомогательным модулем
      */
-    public $is_helper = 0;
+    public $is_helper = 1;
     
     /**
      * Относится ли модуль к ядру
@@ -52,7 +50,7 @@ class AbstractModule
     /**
      * Автор
      */
-    public $author = '';
+    public $author = 'Trix';
     
     public function install()
     {
@@ -90,10 +88,5 @@ class AbstractModule
     public function files()
     {
         return array();
-    }
-    
-    function __get($name)
-    {
-        return \CI::$APP->$name;
     }
 }

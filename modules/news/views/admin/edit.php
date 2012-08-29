@@ -51,19 +51,11 @@
         ),
         array(
             'type'=>'submit',
-            'name'=>'apply',
-            'value'=>'Применить',
-            'attr'=>array('type'=>'submit', 'value'=>' '),
-            'visibility'=>$news ? TRUE : FALSE,
-            'extra'=>' <input type="submit" name="submit" value="Сохранить" class="btn btn-primary" /> '. URL::anchor('admin/news', 'Обратно', array('class'=>'btn'))
-        ),
-        array(
-            'type'=>'submit',
             'name'=>'submit',
             'value'=>'Сохранить',
             'attr'=>array('type'=>'submit', 'value'=>' '),
-            'visibility'=>!$news,
-            'extra'=>' '. URL::anchor('admin/news', 'Обратно', array('class'=>'btn'))
+            'extra'=>' '. ( $news ? '<input type="submit" name="apply" value="Применить" class="btn btn-primary" />' : '' )
+                     .' '. URL::anchor('admin/news', 'Обратно', array('class'=>'btn'))
         )
     )
 ))?>
