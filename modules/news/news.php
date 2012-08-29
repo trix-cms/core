@@ -25,7 +25,7 @@ class News extends Modules\AbstractModule
     /**
      * Версия
      */
-    public $version = '0.1.1';
+    public $version = '0.1.2';
     
     /**
      * Является ли модуль утилитой

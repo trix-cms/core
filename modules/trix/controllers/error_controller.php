@@ -25,7 +25,7 @@ class Error_Controller extends Trix\Controllers\Base
         $this->render('error/404');
     }
     
-    function action_general()
+    function general()
     {
         $this->render('error/general');
     }

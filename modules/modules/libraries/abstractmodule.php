@@ -82,7 +82,6 @@ class AbstractModule
             'name'=>$this->name,
             'description'=>$this->description,
             'class'=>$this->class,
-            'url'=>$this->url,
             'version'=>$this->version,
             'is_utility'=>$this->is_utility,
             'is_helper'=>$this->is_helper,
