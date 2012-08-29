@@ -73,6 +73,7 @@ class Base
         
         if( $folder != '' )
         {
+            // если указаны файлы, удаляем их
             if( count($files) > 0)
             {
                 foreach($files as $file)
@@ -82,9 +83,10 @@ class Base
                     $fileHelper->remove($file);
                 }
             }
+            // если не указаны файлы удаляем всю папку
             else
             {
-                $fileHelper->remove(self::EXTRACT_PATH . $folder . strtolower($this->module->slug));
+                $fileHelper->remove(self::EXTRACT_PATH . $folder);
             }
         }
     }
@@ -98,6 +100,10 @@ class Base
         if( strstr($this->module->slug, '\\') !== FALSE )
         {
             list($folder) = explode('\\', strtolower($this->module->slug));
+        }
+        else
+        {
+            $folder = strtolower($this->module->slug);
         }
         
         return $folder .'/';
