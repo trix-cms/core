@@ -1,7 +1,7 @@
 <tr id="<?=$item->id?>">
     <td>
         <?=URL::anchor(
-            'addons/view/'. $item->slug,
+            'addons/view/'. $item->class,
             $item->name   
         )?>
     </td>
@@ -12,13 +12,13 @@
         <?=$item->version?>
     </td>
     <td style="width: 120px; text-align: center;">     
-        <?php if( !isset($installed_modules[$item->slug . $item->author]) ):?>
+        <?php if( !isset($installed_modules[$item->class . $item->author]) ):?>
             <a
                 href="#"
                 class="download"
             >установить</a>     
         <?php else:?>        
-            <?php if( $item->version != $installed_modules[$item->slug . $item->author]->version ):?>
+            <?php if( $item->version != $installed_modules[$item->class . $item->author]->version ):?>
                 <a 
                     href="#"
                     class="update"

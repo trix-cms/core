@@ -80,7 +80,7 @@ class Modules_Controller extends Trix\Controllers\Backend {
             {
                 foreach($modules as $item)
                 {
-                    $installed_modules[$item->slug . $item->author] = $item;
+                    $installed_modules[$item->class . $item->author] = $item;
                 }
             }
             

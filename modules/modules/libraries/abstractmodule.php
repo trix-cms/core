@@ -17,7 +17,12 @@ class AbstractModule
     /**
      * Имя на англ.
      */
-    public $slug;    
+    public $class;   
+    
+    /**
+     * Ссылка
+     */
+    public $class; 
     
     /**
      * Версия
@@ -61,13 +66,13 @@ class AbstractModule
     
     public function uninstall()
     {        
-        $this->modules_m->by_slug($this->slug)->delete();
-        $this->settings_m->by_module($this->slug)->delete();
+        $this->modules_m->by_class($this->class)->delete();
+        $this->settings_m->by_module($this->class)->delete();
     }
     
     public function update()
     {        
-        $this->modules_m->by_slug($this->slug)->delete();
+        $this->modules_m->by_class($this->class)->delete();
         $this->add_to_modules();
     }
     
@@ -76,7 +81,7 @@ class AbstractModule
         $this->modules_m->insert(array(
             'name'=>$this->name,
             'description'=>$this->description,
-            'slug'=>$this->slug,
+            'class'=>$this->class,
             'version'=>$this->version,
             'is_utility'=>$this->is_utility,
             'is_helper'=>$this->is_helper,

@@ -1,4 +1,4 @@
-z<?php
+<?php
 
 class jQuery extends Modules\AbstractModule
 {

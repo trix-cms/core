@@ -107,13 +107,13 @@ class Base
     protected function get_subfolder()
     {
         $folder = '';
-        if( strstr($this->module->slug, '\\') !== FALSE )
+        if( strstr($this->module->class, '\\') !== FALSE )
         {
-            list($folder) = explode('\\', strtolower($this->module->slug));
+            list($folder) = explode('\\', strtolower($this->module->class));
         }
         else
         {
-            $folder = strtolower($this->module->slug);
+            $folder = strtolower($this->module->class);
         }
         
         return $folder .'/';
@@ -124,7 +124,7 @@ class Base
      */
     function get_module_instance()
     {
-        $module_slug = strtolower($this->module->slug);
+        $module_slug = strtolower($this->module->class);
         
         if( strstr($module_slug,'\\') !== FALSE )
         {

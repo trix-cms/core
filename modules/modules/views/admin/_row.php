@@ -1,8 +1,8 @@
-<tr id="<?=$item->slug?>">
+<tr id="<?=$item->class?>">
     <td>
         <?php if( $item->is_backend ):?>
             <?=URL::anchor(
-                'admin/'. strtolower($item->slug),
+                'admin/'. $item->url,
                 $item->name
             )?>
         <?php else:?>
