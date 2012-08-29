@@ -29,6 +29,16 @@ class Base
         $archive = file_get_contents(self::ADDONS_URL . 'download/' . $this->module_id);
         $this->module = unserialize(file_get_contents(self::ADDONS_URL . 'info/'. $this->module_id));
         
+        if( !is_writable(self::UPLOAD_PATH) )
+        {
+            echo json_encode(array(
+                'success'=>false,
+                'message'=>'Для установки модуля требуются права для записи в папку '. self::UPLOAD_PATH
+            ));
+            
+            exit;
+        }
+        
         file_put_contents(self::UPLOAD_PATH . $this->module->archive, $archive);
     }
     

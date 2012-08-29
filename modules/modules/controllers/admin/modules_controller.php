@@ -83,6 +83,17 @@ class Modules_Controller extends Trix\Controllers\Backend {
                     $installed_modules[$item->slug . $item->author] = $item;
                 }
             }
+            
+            // проверяем, что на папку установлены права для записи
+            if( !is_writable(Modules\Addons\Base::UPLOAD_PATH) OR !is_writable(Modules\Addons\Base::EXTRACT_PATH) )
+            {
+                $this->alert->set(
+                    Trix\Alert::ATTENTION, 
+                    'Для установки модулей требуются права для записи в папку <strong>'
+                    . Modules\Addons\Base::UPLOAD_PATH .'</strong> и <strong>'
+                    . Modules\Addons\Base::EXTRACT_PATH
+                );
+            }
         }
         
         // хлебные крошки

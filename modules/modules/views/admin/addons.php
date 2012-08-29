@@ -1,3 +1,5 @@
+<?php $this->alert->display()?>
+
 <div class="search-modules">
     <?php if( is_array($items) ):?>
         <?php HTML\Table::display(array(
@@ -33,10 +35,15 @@
         var module = $(this).parents("tr").attr("id");
         
         var label = $(this).wrap('<span class="label label-info" />').parent();
-        label.html('устанавливается');
+        label.html('устанавливается...');
         
-        $.get(BASE_URL + 'admin/modules/install/' + module, function(data){
-            label.removeClass('label-info').addClass('label-success').html('установлен');
+        $.getJSON(BASE_URL + 'admin/modules/install/' + module, function(data){
+            if( data.success ){
+                label.removeClass('label-info').addClass('label-success').html('установлен');
+            } else {
+                label.wrap('<a class="download" href="#" />').parent().html('установить');
+                $(".search-modules").before('<div class="alert alert-attention"><a class="close" data-dismiss="alert" href="#">&times;</a>' + data.message +'</div>');
+            }            
         });        
         return false;
     });
