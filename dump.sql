@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 192.168.1.100:3306
--- Время создания: Авг 29 2012 г., 22:22
+-- Время создания: Авг 30 2012 г., 01:32
 -- Версия сервера: 5.5.27-log
 -- Версия PHP: 5.3.15
 
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 --
 
 INSERT INTO `migrations` (`version`) VALUES
-(1);
+(2);
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `modules` (
   `name` varchar(50) NOT NULL,
   `description` varchar(255) NOT NULL,
   `version` varchar(10) NOT NULL,
-  `slug` varchar(25) NOT NULL,
+  `class` varchar(25) NOT NULL,
   `is_frontend` tinyint(1) NOT NULL,
   `is_backend` tinyint(1) unsigned NOT NULL,
   `is_core` tinyint(1) NOT NULL,
@@ -76,6 +76,9 @@ CREATE TABLE IF NOT EXISTS `modules` (
   `is_helper` tinyint(1) unsigned NOT NULL,
   `enable` tinyint(1) NOT NULL,
   `author` varchar(50) NOT NULL,
+  `created_on` int(10) unsigned NOT NULL,
+  `update_on` int(10) unsigned NOT NULL,
+  `url` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
@@ -83,23 +86,23 @@ CREATE TABLE IF NOT EXISTS `modules` (
 -- Дамп данных таблицы `modules`
 --
 
-INSERT INTO `modules` (`id`, `name`, `description`, `version`, `slug`, `is_frontend`, `is_backend`, `is_core`, `is_utility`, `is_helper`, `enable`, `author`) VALUES
-(4, 'Модули', 'Модуль операций с модулями.', '0.1', 'Modules', 0, 1, 1, 0, 0, 1, 'Trix'),
-(207, 'Вход в панель управления', 'Страница входа в панель управления', '0.1', 'Admin', 1, 0, 1, 0, 0, 0, 'Trix'),
-(7, 'Настройки', 'Настройки модулей и сайта', '0.1', 'Settings', 0, 1, 1, 0, 0, 1, 'Trix'),
-(204, 'Пользователи', 'Пользователи с группами и правами', '0.1', 'Users', 1, 1, 1, 0, 0, 1, 'Trix'),
-(127, 'Категории', 'Модуль позволяет добавлять категории в другие модули', '0.1', 'Categories', 0, 1, 1, 0, 0, 0, 'Trix'),
-(203, 'jQuery', 'Добавляет ссылку на jQuery', '1.1.1', 'jQuery', 0, 0, 1, 0, 1, 0, 'Trix'),
-(208, 'Assets', 'Хелпер для работы с js, css и изображениями', '0.1', 'Assets', 0, 0, 1, 0, 1, 0, 'Trix'),
-(209, 'Dashboard', 'Первая страница при входе в панель управления или на сайт', '0.1', 'Dashboard', 0, 1, 1, 0, 0, 0, 'Trix'),
-(210, 'HTML', 'Хелпер для работы с html', '0.1', 'HTML', 0, 0, 1, 0, 1, 0, 'Trix'),
-(211, 'Установщик', 'Начальная установка TrixCMS', '0.1', 'Install', 0, 0, 0, 0, 0, 1, 'Trix'),
-(212, 'Миграции', 'Модуль миграций БД', '0.1', 'Migrations', 0, 0, 1, 1, 0, 0, 'Trix'),
-(213, 'URL', 'Хелпер для формирования ссылок, редиректа и пр.', '0.1', 'URL', 0, 0, 1, 0, 1, 0, 'Trix'),
-(214, 'CURL', 'CURL php by PhilSturgeon', '0.1', 'Trix\\Curl', 0, 0, 1, 0, 1, 0, 'Trix'),
-(215, 'File', 'Хелпер для работы с файлами', '0.1', 'Trix\\File', 0, 0, 1, 0, 1, 0, 'Trix'),
-(216, 'String', 'Хелпер для работы со строками', '0.1', 'Trix\\String', 0, 0, 1, 0, 1, 0, 'Trix'),
-(217, 'WYSIWYG', 'Визуальные редакторы. TinyMCE, CKEditor, Redaktor', '0.1', 'Trix\\WYSIWYG', 0, 0, 1, 0, 1, 0, 'Trix');
+INSERT INTO `modules` (`id`, `name`, `description`, `version`, `class`, `is_frontend`, `is_backend`, `is_core`, `is_utility`, `is_helper`, `enable`, `author`, `created_on`, `update_on`, `url`) VALUES
+(207, 'Вход в панель управления', 'Страница входа в панель управления', '0.1', 'Admin', 1, 0, 1, 0, 0, 0, 'Trix', 0, 0, 'admin'),
+(7, 'Настройки', 'Настройки модулей и сайта', '0.1', 'Settings', 0, 1, 1, 0, 0, 1, 'Trix', 0, 0, 'settings'),
+(204, 'Пользователи', 'Пользователи с группами и правами', '0.1', 'Users', 1, 1, 1, 0, 0, 1, 'Trix', 0, 0, 'users'),
+(127, 'Категории', 'Модуль позволяет добавлять категории в другие модули', '0.1', 'Categories', 0, 1, 1, 0, 0, 0, 'Trix', 0, 0, ''),
+(203, 'jQuery', 'Добавляет ссылку на jQuery', '1.1.1', 'jQuery', 0, 0, 1, 0, 1, 0, 'Trix', 0, 0, ''),
+(208, 'Assets', 'Хелпер для работы с js, css и изображениями', '0.1', 'Assets', 0, 0, 1, 0, 1, 0, 'Trix', 0, 0, ''),
+(209, 'Dashboard', 'Первая страница при входе в панель управления или на сайт', '0.1', 'Dashboard', 0, 1, 1, 0, 0, 0, 'Trix', 0, 0, 'dashboard'),
+(210, 'HTML', 'Хелпер для работы с html', '0.1', 'HTML', 0, 0, 1, 0, 1, 0, 'Trix', 0, 0, ''),
+(211, 'Установщик', 'Начальная установка TrixCMS', '0.1', 'Install', 0, 0, 0, 0, 0, 1, 'Trix', 0, 0, ''),
+(212, 'Миграции', 'Модуль миграций БД', '0.1', 'Migrations', 0, 1, 1, 1, 0, 0, 'Trix', 0, 0, 'migrations'),
+(213, 'URL', 'Хелпер для формирования ссылок, редиректа и пр.', '0.1', 'URL', 0, 0, 1, 0, 1, 0, 'Trix', 0, 0, ''),
+(214, 'CURL', 'CURL php by PhilSturgeon', '0.1', 'Trix\\Curl', 0, 0, 1, 0, 1, 0, 'Trix', 0, 0, ''),
+(215, 'File', 'Хелпер для работы с файлами', '0.1', 'Trix\\File', 0, 0, 1, 0, 1, 0, 'Trix', 0, 0, ''),
+(216, 'String', 'Хелпер для работы со строками', '0.1', 'Trix\\String', 0, 0, 1, 0, 1, 0, 'Trix', 0, 0, ''),
+(217, 'WYSIWYG', 'Визуальные редакторы. TinyMCE, CKEditor, Redaktor', '0.1', 'Trix\\WYSIWYG', 0, 0, 1, 0, 1, 0, 'Trix', 0, 0, ''),
+(245, 'Модули', 'Модуль для добавления, удаления и других операций с модулями.', '0.1.1', 'Modules\\Base', 0, 1, 1, 0, 0, 0, 'Trix', 0, 0, 'modules');
 
 -- --------------------------------------------------------
 
@@ -145,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`session_id`, `ip_address`, `user_agent`, `user_id`, `last_activity`, `request_uri`, `user_data`) VALUES
-('tl2vntab2u883mrbhliinb0241', '192.168.1.100', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', 1, 1346263409, 'http://core/admin/modules/', 'regenerated|i:1346263336;ip_address|s:13:"192.168.1.100";user_id|s:1:"1";');
+('vf30cspstealr7i1qpg7u1pa00', '192.168.1.100', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', 1, 1346275417, '', 'regenerated|i:1346275248;ip_address|s:13:"192.168.1.100";user_id|s:1:"1";');
 
 -- --------------------------------------------------------
 
@@ -208,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `group_slug`, `login`, `password`, `signature`, `email`, `is_active`, `activation_code`, `reset_token`, `register_date`, `lastvisit_date`, `last_ip`, `avatar`, `user_agent`) VALUES
-(1, 'admins', 'Trix', 'a52688416ce94dc940f53c514c216adc75492e85', '', 'tbakarov@gmail.com', 1, '', '', 0, 1346263409, '192.168.1.100', '43604caa5427310004ee38f658b96051.jpg', '0'),
+(1, 'admins', 'admin', 'a52688416ce94dc940f53c514c216adc75492e85', '', 'tbakarov@gmail.com', 1, '', '', 0, 1346275417, '192.168.1.100', '43604caa5427310004ee38f658b96051.jpg', '0'),
 (0, 'guests', 'guest', '', '', '', 0, '', 'ea7dcbdc40ac8bb74ff8723018b6fd44f1bd3718', 0, 0, '127.0.0.1', 'default.gif', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.52 Safari/536.5');
 
 -- --------------------------------------------------------
