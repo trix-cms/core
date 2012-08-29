@@ -8,7 +8,7 @@ class Base
     protected $module;
     protected $module_inst;
     
-    const ADDONS_URL = 'http://core/addons/get/';
+    const ADDONS_URL = 'http://trixcms.ru/addons/get/';
     const UPLOAD_PATH = 'uploads/';
     const EXTRACT_PATH = 'modules/';
     
