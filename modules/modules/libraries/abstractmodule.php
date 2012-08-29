@@ -22,7 +22,7 @@ class AbstractModule
     /**
      * Ссылка
      */
-    public $class; 
+    public $url; 
     
     /**
      * Версия
