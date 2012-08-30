@@ -56,7 +56,7 @@ class Base
         
         if ($res === TRUE)
         {            
-            $zip->extractTo(rtrim(self::EXTRACT_PATH, '/'));
+            $zip->extractTo(self::EXTRACT_PATH);
             $zip->close();
             
             unlink($file);
@@ -88,7 +88,7 @@ class Base
             {
                 foreach($files as $file)
                 {
-                    $file = self::EXTRACT_PATH . $folder .'/'. str_replace('..', '', $file);
+                    $file = self::EXTRACT_PATH . $folder . str_replace('..', '', $file);
                     
                     $fileHelper->remove($file);
                 }
@@ -116,7 +116,7 @@ class Base
             $folder = strtolower($this->module->class);
         }
         
-        return $folder;
+        return $folder .'/';
     }
     
     /**

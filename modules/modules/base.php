@@ -25,7 +25,7 @@ class Base extends Modules\AbstractModule
     /**
      * Версия
      */
-    public $version = '0.1'; 
+    public $version = '0.2'; 
     
     /**
      * Является ли модуль утилитой
